@@ -1,0 +1,70 @@
+# depslib dependency file v1.0
+1419292055 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\main.c
+	"mz80_lib/include/system/system.h"
+	"mz80_lib/include/io/stdio.h"
+	"mz80_lib/include/memory/alloc.h"
+	"mz80_lib/include/stdlib/stdlib.h"
+	"mz80_lib/include/stdlib/string/string.h"
+	"mz80_lib/include/stdlib/math/math.h"
+
+1417911295 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\pio\io_int\io.c
+	"..\..\..\..\include\io\io.h"
+
+1417910323 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\io.h
+	"..\system\system.h"
+
+1417910479 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\system\system.h
+	"..\io\io.h"
+
+1417910983 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\pio\lcd\lcd.c
+	"..\..\..\..\include\io\lcd.h"
+
+1417911020 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\lcd.h
+	"..\system\system.h"
+
+1417928576 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\sio\uart\uart.c
+	"..\..\..\..\include\io\uart.h"
+
+1417910461 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\uart.h
+	"..\system\system.h"
+
+1419092956 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\memory\alloc.c
+	"..\..\include\memory\alloc.h"
+
+1419092975 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\memory\alloc.h
+	"..\types\stddef.h"
+	"heap.h"
+
+1417921148 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\types\stddef.h
+
+1419092273 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\memory\heap.h
+	"..\types\stddef.h"
+
+1419092274 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\memory\heap.c
+	"..\..\include\memory\heap.h"
+
+1419126361 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\memory\memcpy.c
+	"..\..\include\stdlib\stdlib.h"
+
+1419125121 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\stdlib\stdlib.h
+	"..\types\stddef.h"
+
+1419217366 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\stdlib\math\div.c
+	"..\..\..\include\stdlib\math\math.h"
+
+1419217351 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\stdlib\math\math.h
+
+1419218908 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\stdlib\string\string.c
+	"..\..\..\include\stdlib\string\string.h"
+
+1419217347 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\stdlib\string\string.h
+	"..\math\math.h"
+
+1419092151 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\system\system.c
+	"..\..\include\system\system.h"
+
+1417912924 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\stdio.h
+	"lcd.h"
+	"io.h"
+	"uart.h"
+
