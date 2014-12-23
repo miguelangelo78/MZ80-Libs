@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
-; This file was generated Tue Dec 23 01:38:10 2014
+; This file was generated Tue Dec 23 03:03:37 2014
 ;--------------------------------------------------------
 	.module main
 	.optsdcc -mz80
@@ -52,11 +52,11 @@
 ; ---------------------------------
 _main_start::
 _main:
-;main.c:12: str=  0x2000;
+;main.c:12: str=  (char *)0x2000;
 	ld	de,#0x2000
 	ld	b,#0x01
-00103$:
-;main.c:14: itos(i,str,10);
+00102$:
+;main.c:15: itos(i,str,10);
 	push	bc
 	push	de
 	ld	a,#0x0A
@@ -82,9 +82,9 @@ _main:
 	call	_uart_end
 	pop	de
 	pop	bc
-;main.c:13: for(;;i++){
+;main.c:14: for(;;i++){
 	inc	b
-	jr	00103$
+	jr	00102$
 _main_end::
 	.area _CODE
 	.area _INITIALIZER

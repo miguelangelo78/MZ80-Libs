@@ -37,10 +37,11 @@ void uart_print_char(char data){
 }
 
 void uart_print_str(char *str){
+	unsigned char ret = 0;
 	uart_begin();
-	while(1)
-		if(*str=='\0') return;
-		else uart_print_char(*str++);
+	while(ret==0)
+		if(*str=='\0') ret = 1;
+        else uart_print_char(*str++);
 	uart_end();
 }
 

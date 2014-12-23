@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1419298110 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\main.c
+1419303005 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\main.c
 	"mz80_lib/include/system/system.h"
 	"mz80_lib/include/io/stdio.h"
 	"mz80_lib/include/memory/alloc.h"
@@ -22,7 +22,7 @@
 1417911020 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\lcd.h
 	"..\system\system.h"
 
-1417928576 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\sio\uart\uart.c
+1419302939 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\sio\uart\uart.c
 	"..\..\..\..\include\io\uart.h"
 
 1417910461 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\uart.h

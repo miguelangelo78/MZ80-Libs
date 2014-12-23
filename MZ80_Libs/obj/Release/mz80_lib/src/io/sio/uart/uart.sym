@@ -9,23 +9,23 @@ Symbol Table
     .__.H$L.                                                    =  0000 L
   0 ___str_0                                                       0011 R
     _clock_throttle                                                **** GX
-  0 _uart_begin                                                    0041 GR
-  0 _uart_begin_end                                                004A GR
-  0 _uart_begin_start                                              0041 GR
-  0 _uart_clrscr                                                   0040 GR
-  0 _uart_clrscr_end                                               0041 GR
-  0 _uart_clrscr_start                                             0040 GR
-  0 _uart_end                                                      004A GR
-  0 _uart_end_end                                                  0052 GR
-  0 _uart_end_start                                                004A GR
-  0 _uart_flush                                                    0037 GR
-  0 _uart_flush_end                                                0040 GR
-  0 _uart_flush_start                                              0037 GR
+  0 _uart_begin                                                    0066 GR
+  0 _uart_begin_end                                                006F GR
+  0 _uart_begin_start                                              0066 GR
+  0 _uart_clrscr                                                   0065 GR
+  0 _uart_clrscr_end                                               0066 GR
+  0 _uart_clrscr_start                                             0065 GR
+  0 _uart_end                                                      006F GR
+  0 _uart_end_end                                                  0077 GR
+  0 _uart_end_start                                                006F GR
+  0 _uart_flush                                                    005C GR
+  0 _uart_flush_end                                                0065 GR
+  0 _uart_flush_start                                              005C GR
   0 _uart_print_char                                               0012 GR
   0 _uart_print_char_end                                           0021 GR
   0 _uart_print_char_start                                         0012 GR
   0 _uart_print_str                                                0021 GR
-  0 _uart_print_str_end                                            0037 GR
+  0 _uart_print_str_end                                            005C GR
   0 _uart_print_str_start                                          0021 GR
   0 _uart_read_char                                                0000 GR
   0 _uart_read_char_end                                            000D GR
@@ -41,7 +41,7 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   52   flags    0
+   0 _CODE                                      size   77   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8

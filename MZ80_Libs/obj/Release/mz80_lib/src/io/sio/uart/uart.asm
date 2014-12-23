@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
-; This file was generated Tue Dec 23 01:34:29 2014
+; This file was generated Tue Dec 23 03:03:10 2014
 ;--------------------------------------------------------
 	.module uart
 	.optsdcc -mz80
@@ -104,19 +104,33 @@ _uart_print_char_end::
 ; ---------------------------------
 _uart_print_str_start::
 _uart_print_str:
-;mz80_lib\src\io\sio\uart\uart.c:40: uart_begin();
+	dec	sp
+;mz80_lib\src\io\sio\uart\uart.c:40: unsigned char ret = 0;
+	ld	iy,#0
+	add	iy,sp
+	ld	0 (iy),#0x00
+;mz80_lib\src\io\sio\uart\uart.c:41: uart_begin();
 	call	_uart_begin
-;mz80_lib\src\io\sio\uart\uart.c:41: while(1)
-	pop	bc
-	pop	hl
-	push	hl
-	push	bc
-00105$:
-;mz80_lib\src\io\sio\uart\uart.c:42: if(*str=='\0') return;
-	ld	a,(hl)
-	or	a, a
-	ret	Z
-;mz80_lib\src\io\sio\uart\uart.c:43: else uart_print_char(*str++);
+;mz80_lib\src\io\sio\uart\uart.c:42: while(ret==0)
+	ld	hl, #3
+	add	hl, sp
+	ld	a, (hl)
+	inc	hl
+	ld	h, (hl)
+	ld	l, a
+00104$:
+	ld	iy,#0
+	add	iy,sp
+	ld	a,0 (iy)
+;mz80_lib\src\io\sio\uart\uart.c:43: if(*str=='\0') ret = 1;
+	or	a,a
+	jr	NZ,00106$
+	or	a,(hl)
+	jr	NZ,00102$
+	ld	0 (iy),#0x01
+	jr	00104$
+00102$:
+;mz80_lib\src\io\sio\uart\uart.c:44: else uart_print_char(*str++);
 	inc	hl
 	push	hl
 	push	af
@@ -124,17 +138,20 @@ _uart_print_str:
 	call	_uart_print_char
 	inc	sp
 	pop	hl
-	jr	00105$
-;mz80_lib\src\io\sio\uart\uart.c:44: uart_end();
+	jr	00104$
+00106$:
+;mz80_lib\src\io\sio\uart\uart.c:45: uart_end();
+	call	_uart_end
+	inc	sp
 	ret
 _uart_print_str_end::
-;mz80_lib\src\io\sio\uart\uart.c:47: void uart_flush(){
+;mz80_lib\src\io\sio\uart\uart.c:48: void uart_flush(){
 ;	---------------------------------
 ; Function uart_flush
 ; ---------------------------------
 _uart_flush_start::
 _uart_flush:
-;mz80_lib\src\io\sio\uart\uart.c:48: uart_print_char(UART_FLUSH_C);
+;mz80_lib\src\io\sio\uart\uart.c:49: uart_print_char(UART_FLUSH_C);
 	ld	a,#0x18
 	push	af
 	inc	sp
@@ -142,22 +159,22 @@ _uart_flush:
 	inc	sp
 	ret
 _uart_flush_end::
-;mz80_lib\src\io\sio\uart\uart.c:51: void uart_clrscr(){
+;mz80_lib\src\io\sio\uart\uart.c:52: void uart_clrscr(){
 ;	---------------------------------
 ; Function uart_clrscr
 ; ---------------------------------
 _uart_clrscr_start::
 _uart_clrscr:
-;mz80_lib\src\io\sio\uart\uart.c:54: }
+;mz80_lib\src\io\sio\uart\uart.c:55: }
 	ret
 _uart_clrscr_end::
-;mz80_lib\src\io\sio\uart\uart.c:56: void uart_begin(){
+;mz80_lib\src\io\sio\uart\uart.c:57: void uart_begin(){
 ;	---------------------------------
 ; Function uart_begin
 ; ---------------------------------
 _uart_begin_start::
 _uart_begin:
-;mz80_lib\src\io\sio\uart\uart.c:57: clock_throttle(CLK_0041MHZ);
+;mz80_lib\src\io\sio\uart\uart.c:58: clock_throttle(CLK_0041MHZ);
 	ld	a,#0x01
 	push	af
 	inc	sp
@@ -165,13 +182,13 @@ _uart_begin:
 	inc	sp
 	ret
 _uart_begin_end::
-;mz80_lib\src\io\sio\uart\uart.c:59: void uart_end(){
+;mz80_lib\src\io\sio\uart\uart.c:60: void uart_end(){
 ;	---------------------------------
 ; Function uart_end
 ; ---------------------------------
 _uart_end_start::
 _uart_end:
-;mz80_lib\src\io\sio\uart\uart.c:60: clock_throttle(CLK_3MHZ);
+;mz80_lib\src\io\sio\uart\uart.c:61: clock_throttle(CLK_3MHZ);
 	xor	a, a
 	push	af
 	inc	sp

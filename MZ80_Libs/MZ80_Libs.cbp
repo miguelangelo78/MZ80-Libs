@@ -19,6 +19,9 @@
 				<Linker>
 					<Add option="C:\z80c\crt0.rel" />
 				</Linker>
+				<ExtraCommands>
+					<Add after='hex2bin &quot;$(TARGET_OUTPUT_FILE)&quot;' />
+				</ExtraCommands>
 			</Target>
 		</Build>
 		<Unit filename="MZ80_Libs.depend" />

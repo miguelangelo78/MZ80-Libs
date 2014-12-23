@@ -9,7 +9,8 @@ void main(){
 	char * str;
 	unsigned char i = 1;
 
-    str=  0x2000;
+    str=  (char *)0x2000;
+
 	for(;;i++){
 		itos(i,str,10);
 		uart_print_str(str);
@@ -17,6 +18,4 @@ void main(){
 		uart_print_char(13);
 		uart_end();
 	}
-
-	for(;;);
 }

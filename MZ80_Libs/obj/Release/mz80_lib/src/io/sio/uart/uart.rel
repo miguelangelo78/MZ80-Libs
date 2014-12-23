@@ -4,31 +4,31 @@ M uart
 O -mz80
 S _clock_throttle Ref0000
 S .__.ABS. Def0000
-A _CODE size 52 flags 0 addr 0
-S _uart_clrscr Def0040
-S _uart_end_end Def0052
-S _uart_begin_start Def0041
+A _CODE size 77 flags 0 addr 0
+S _uart_clrscr Def0065
+S _uart_end_end Def0077
+S _uart_begin_start Def0066
 S _uart_read_str Def000D
-S _uart_clrscr_start Def0040
+S _uart_clrscr_start Def0065
 S _uart_read_char Def0000
-S _uart_begin_end Def004A
-S _uart_clrscr_end Def0041
+S _uart_begin_end Def006F
+S _uart_clrscr_end Def0066
 S _uart_read_str_start Def000D
-S _uart_flush Def0037
+S _uart_flush Def005C
 S _uart_print_str Def0021
 S _uart_read_char_start Def0000
 S _uart_read_str_end Def0011
 S _uart_print_char Def0012
-S _uart_flush_start Def0037
+S _uart_flush_start Def005C
 S _uart_read_char_end Def000D
 S _uart_print_str_start Def0021
 S _uart_print_char_start Def0012
-S _uart_end Def004A
-S _uart_flush_end Def0040
-S _uart_print_str_end Def0037
+S _uart_end Def006F
+S _uart_flush_end Def0065
+S _uart_print_str_end Def005C
 S _uart_print_char_end Def0021
-S _uart_end_start Def004A
-S _uart_begin Def0041
+S _uart_end_start Def006F
+S _uart_begin Def0066
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -73,45 +73,55 @@ T 21 00
 R 00 00 00 00
 T 21 00
 R 00 00 00 00
-T 21 00 CD 41 00 C1 E1 E5 C5
-R 00 00 00 00 00 03 00 00
-T 28 00
-R 00 00 00 00
-T 28 00 7E B7 C8 23 E5 F5 33 CD 12 00 33 E1 18 F2
-R 00 00 00 00 00 0A 00 00
-T 36 00 C9
+T 21 00 3B FD 21 00 00 FD 39 FD 36 00 00 CD 66 00
+R 00 00 00 00 00 0E 00 00
+T 2F 00 21 03 00 39 7E 23 66 6F
 R 00 00 00 00
 T 37 00
 R 00 00 00 00
-T 37 00
+T 37 00 FD 21 00 00 FD 39 FD 7E 00 B7 20 14 B6 20
 R 00 00 00 00
-T 37 00
+T 45 00 06 FD 36 00 01 18 EB
 R 00 00 00 00
-T 37 00 3E 18 F5 33 CD 12 00 33 C9
+T 4C 00
+R 00 00 00 00
+T 4C 00 23 E5 F5 33 CD 12 00 33 E1 18 E0
 R 00 00 00 00 00 07 00 00
-T 40 00
+T 57 00
 R 00 00 00 00
-T 40 00
+T 57 00 CD 6F 00 33 C9
+R 00 00 00 00 00 03 00 00
+T 5C 00
 R 00 00 00 00
-T 40 00
+T 5C 00
 R 00 00 00 00
-T 40 00 C9
+T 5C 00
 R 00 00 00 00
-T 41 00
+T 5C 00 3E 18 F5 33 CD 12 00 33 C9
+R 00 00 00 00 00 07 00 00
+T 65 00
 R 00 00 00 00
-T 41 00
+T 65 00
 R 00 00 00 00
-T 41 00
+T 65 00
 R 00 00 00 00
-T 41 00 3E 01 F5 33 CD 00 00 33 C9
+T 65 00 C9
+R 00 00 00 00
+T 66 00
+R 00 00 00 00
+T 66 00
+R 00 00 00 00
+T 66 00
+R 00 00 00 00
+T 66 00 3E 01 F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 07 00 00
-T 4A 00
+T 6F 00
 R 00 00 00 00
-T 4A 00
+T 6F 00
 R 00 00 00 00
-T 4A 00
+T 6F 00
 R 00 00 00 00
-T 4A 00 AF F5 33 CD 00 00 33 C9
+T 6F 00 AF F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 06 00 00
-T 52 00
+T 77 00
 R 00 00 00 00
