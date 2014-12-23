@@ -7,21 +7,24 @@ Symbol Table
     .__.ABS.                                                    =  0000 G
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
-    _itos                                                          **** GX
+  0 ___str_0                                                       001F R
+  0 ___str_1                                                       0026 R
+  0 ___str_2                                                       002C R
+    _init                                                          **** GX
+    _lcd_print_str                                                 **** GX
   0 _main                                                          0000 GR
-  0 _main_end                                                      002D GR
+  0 _main_end                                                      001F GR
   0 _main_start                                                    0000 GR
-    _uart_begin                                                    **** GX
-    _uart_end                                                      **** GX
-    _uart_print_char                                               **** GX
-    _uart_print_str                                                **** GX
+    _puts                                                          **** GX
+    _strcpy                                                        **** GX
+
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   2D   flags    0
+   0 _CODE                                      size   32   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8

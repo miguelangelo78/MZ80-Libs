@@ -1,7 +1,7 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
                               3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
-                              4 ; This file was generated Tue Dec 23 03:03:12 2014
+                              4 ; This file was generated Tue Dec 23 18:07:59 2014
                               5 ;--------------------------------------------------------
                               6 	.module system
                               7 	.optsdcc -mz80
@@ -10,163 +10,171 @@
                              10 ; Public variables in this module
                              11 ;--------------------------------------------------------
                              12 	.globl _out
-                             13 	.globl _init_pio
-                             14 	.globl _init_lcd
-                             15 	.globl _init_io
-                             16 	.globl _init
-                             17 	.globl _clock_throttle
-                             18 	.globl _delay_ms
-                             19 	.globl _delay_sec
-                             20 	.globl _end
-                             21 ;--------------------------------------------------------
-                             22 ; special function registers
-                             23 ;--------------------------------------------------------
+                             13 	.globl _is_init
+                             14 	.globl _init_pio
+                             15 	.globl _init_lcd
+                             16 	.globl _init_io
+                             17 	.globl _init
+                             18 	.globl _clock_throttle
+                             19 	.globl _delay_ms
+                             20 	.globl _delay_sec
+                             21 	.globl _end
+                             22 ;--------------------------------------------------------
+                             23 ; special function registers
                              24 ;--------------------------------------------------------
-                             25 ; ram data
-                             26 ;--------------------------------------------------------
-                             27 	.area _DATA
-                             28 ;--------------------------------------------------------
-                             29 ; ram data
-                             30 ;--------------------------------------------------------
-                             31 	.area _INITIALIZED
-                             32 ;--------------------------------------------------------
-                             33 ; absolute external ram data
-                             34 ;--------------------------------------------------------
-                             35 	.area _DABS (ABS)
-                             36 ;--------------------------------------------------------
-                             37 ; global & static initialisations
-                             38 ;--------------------------------------------------------
-                             39 	.area _HOME
-                             40 	.area _GSINIT
-                             41 	.area _GSFINAL
-                             42 	.area _GSINIT
-                             43 ;--------------------------------------------------------
-                             44 ; Home
-                             45 ;--------------------------------------------------------
-                             46 	.area _HOME
-                             47 	.area _HOME
+                             25 ;--------------------------------------------------------
+                             26 ; ram data
+                             27 ;--------------------------------------------------------
+                             28 	.area _DATA
+                             29 ;--------------------------------------------------------
+                             30 ; ram data
+                             31 ;--------------------------------------------------------
+                             32 	.area _INITIALIZED
+   0000                      33 _is_init::
+   0000                      34 	.ds 1
+                             35 ;--------------------------------------------------------
+                             36 ; absolute external ram data
+                             37 ;--------------------------------------------------------
+                             38 	.area _DABS (ABS)
+                             39 ;--------------------------------------------------------
+                             40 ; global & static initialisations
+                             41 ;--------------------------------------------------------
+                             42 	.area _HOME
+                             43 	.area _GSINIT
+                             44 	.area _GSFINAL
+                             45 	.area _GSINIT
+                             46 ;--------------------------------------------------------
+                             47 ; Home
                              48 ;--------------------------------------------------------
-                             49 ; code
-                             50 ;--------------------------------------------------------
-                             51 	.area _CODE
-                             52 ;mz80_lib\src\system\system.c:3: void init_pio(){
-                             53 ;	---------------------------------
-                             54 ; Function init_pio
-                             55 ; ---------------------------------
-   0000                      56 _init_pio_start::
-   0000                      57 _init_pio:
-                             58 ;mz80_lib\src\system\system.c:7: __endasm;
-   0000 3E 82         [ 7]   59 	LD A,#130
-   0002 D3 03         [11]   60 	OUT (#3),A
-   0004 C9            [10]   61 	ret
-   0005                      62 _init_pio_end::
-                             63 ;mz80_lib\src\system\system.c:10: void init_lcd(){
-                             64 ;	---------------------------------
-                             65 ; Function init_lcd
-                             66 ; ---------------------------------
-   0005                      67 _init_lcd_start::
-   0005                      68 _init_lcd:
-                             69 ;mz80_lib\src\system\system.c:16: __endasm;
-   0005 3E 0F         [ 7]   70 	LD A,#0x0F
-   0007 D3 02         [11]   71 	OUT (#2),A
-   0009 3E 00         [ 7]   72 	LD A,#0
-   000B D3 0E         [11]   73 	OUT (#6 +8),A
-   000D C9            [10]   74 	ret
-   000E                      75 _init_lcd_end::
-                             76 ;mz80_lib\src\system\system.c:19: void init_io(){
-                             77 ;	---------------------------------
-                             78 ; Function init_io
-                             79 ; ---------------------------------
-   000E                      80 _init_io_start::
-   000E                      81 _init_io:
-                             82 ;mz80_lib\src\system\system.c:20: init_pio();
-   000E CDr00r00      [17]   83 	call	_init_pio
-                             84 ;mz80_lib\src\system\system.c:21: init_lcd();
-   0011 C3r05r00      [10]   85 	jp	_init_lcd
-   0014                      86 _init_io_end::
-                             87 ;mz80_lib\src\system\system.c:24: void init(){
-                             88 ;	---------------------------------
-                             89 ; Function init
-                             90 ; ---------------------------------
-   0014                      91 _init_start::
-   0014                      92 _init:
-                             93 ;mz80_lib\src\system\system.c:26: init_io();
-   0014 C3r0Er00      [10]   94 	jp	_init_io
-   0017                      95 _init_end::
-                             96 ;mz80_lib\src\system\system.c:29: void clock_throttle(char option){
-                             97 ;	---------------------------------
-                             98 ; Function clock_throttle
-                             99 ; ---------------------------------
-   0017                     100 _clock_throttle_start::
-   0017                     101 _clock_throttle:
-                            102 ;mz80_lib\src\system\system.c:30: out(CLOCK_THROTTLE,option);
-   0017 21 02 00      [10]  103 	ld	hl, #2+0
-   001A 39            [11]  104 	add	hl, sp
-   001B 56            [ 7]  105 	ld	d, (hl)
-   001C 1E 1C         [ 7]  106 	ld	e,#0x1C
-   001E D5            [11]  107 	push	de
-   001F CDr00r00      [17]  108 	call	_out
-   0022 F1            [10]  109 	pop	af
-   0023 C9            [10]  110 	ret
-   0024                     111 _clock_throttle_end::
-                            112 ;mz80_lib\src\system\system.c:33: void delay_ms(char ms){
-                            113 ;	---------------------------------
-                            114 ; Function delay_ms
-                            115 ; ---------------------------------
-   0024                     116 _delay_ms_start::
-   0024                     117 _delay_ms:
-                            118 ;mz80_lib\src\system\system.c:35: for(i=0;i<ms;i++){} // THIS FUNCTION IS VERY INACCURATE
-   0024 16 00         [ 7]  119 	ld	d,#0x00
-   0026                     120 00103$:
-   0026 21 02 00      [10]  121 	ld	hl,#2
-   0029 39            [11]  122 	add	hl,sp
-   002A 7A            [ 4]  123 	ld	a,d
-   002B 96            [ 7]  124 	sub	a, (hl)
-   002C E2r31r00      [10]  125 	jp	PO, 00116$
-   002F EE 80         [ 7]  126 	xor	a, #0x80
-   0031                     127 00116$:
-   0031 F0            [11]  128 	ret	P
-   0032 14            [ 4]  129 	inc	d
-   0033 18 F1         [12]  130 	jr	00103$
-   0035 C9            [10]  131 	ret
-   0036                     132 _delay_ms_end::
-                            133 ;mz80_lib\src\system\system.c:38: void delay_sec(char sec){
-                            134 ;	---------------------------------
-                            135 ; Function delay_sec
-                            136 ; ---------------------------------
-   0036                     137 _delay_sec_start::
-   0036                     138 _delay_sec:
-                            139 ;mz80_lib\src\system\system.c:40: for(i=0;i<sec;i++) delay_ms(DELAY_1SEC);
-   0036 16 00         [ 7]  140 	ld	d,#0x00
-   0038                     141 00103$:
-   0038 21 02 00      [10]  142 	ld	hl,#2
-   003B 39            [11]  143 	add	hl,sp
-   003C 7A            [ 4]  144 	ld	a,d
-   003D 96            [ 7]  145 	sub	a, (hl)
-   003E E2r43r00      [10]  146 	jp	PO, 00116$
-   0041 EE 80         [ 7]  147 	xor	a, #0x80
-   0043                     148 00116$:
-   0043 F0            [11]  149 	ret	P
-   0044 D5            [11]  150 	push	de
-   0045 3E 14         [ 7]  151 	ld	a,#0x14
-   0047 F5            [11]  152 	push	af
-   0048 33            [ 6]  153 	inc	sp
-   0049 CDr24r00      [17]  154 	call	_delay_ms
-   004C 33            [ 6]  155 	inc	sp
-   004D D1            [10]  156 	pop	de
-   004E 14            [ 4]  157 	inc	d
-   004F 18 E7         [12]  158 	jr	00103$
-   0051 C9            [10]  159 	ret
-   0052                     160 _delay_sec_end::
-                            161 ;mz80_lib\src\system\system.c:43: void end(){
-                            162 ;	---------------------------------
-                            163 ; Function end
-                            164 ; ---------------------------------
-   0052                     165 _end_start::
-   0052                     166 _end:
-   0052                     167 00103$:
-   0052 18 FE         [12]  168 	jr	00103$
-   0054                     169 _end_end::
-                            170 	.area _CODE
-                            171 	.area _INITIALIZER
-                            172 	.area _CABS (ABS)
+                             49 	.area _HOME
+                             50 	.area _HOME
+                             51 ;--------------------------------------------------------
+                             52 ; code
+                             53 ;--------------------------------------------------------
+                             54 	.area _CODE
+                             55 ;mz80_lib\src\system\system.c:5: void init_pio(){
+                             56 ;	---------------------------------
+                             57 ; Function init_pio
+                             58 ; ---------------------------------
+   0000                      59 _init_pio_start::
+   0000                      60 _init_pio:
+                             61 ;mz80_lib\src\system\system.c:9: __endasm;
+   0000 3E 82         [ 7]   62 	LD A,#130
+   0002 D3 03         [11]   63 	OUT (#3),A
+   0004 C9            [10]   64 	ret
+   0005                      65 _init_pio_end::
+                             66 ;mz80_lib\src\system\system.c:12: void init_lcd(){
+                             67 ;	---------------------------------
+                             68 ; Function init_lcd
+                             69 ; ---------------------------------
+   0005                      70 _init_lcd_start::
+   0005                      71 _init_lcd:
+                             72 ;mz80_lib\src\system\system.c:18: __endasm;
+   0005 3E 0F         [ 7]   73 	LD A,#0x0F
+   0007 D3 02         [11]   74 	OUT (#2),A
+   0009 3E 00         [ 7]   75 	LD A,#0
+   000B D3 0E         [11]   76 	OUT (#6 +8),A
+   000D C9            [10]   77 	ret
+   000E                      78 _init_lcd_end::
+                             79 ;mz80_lib\src\system\system.c:21: void init_io(){
+                             80 ;	---------------------------------
+                             81 ; Function init_io
+                             82 ; ---------------------------------
+   000E                      83 _init_io_start::
+   000E                      84 _init_io:
+                             85 ;mz80_lib\src\system\system.c:22: init_pio();
+   000E CDr00r00      [17]   86 	call	_init_pio
+                             87 ;mz80_lib\src\system\system.c:23: init_lcd();
+   0011 C3r05r00      [10]   88 	jp	_init_lcd
+   0014                      89 _init_io_end::
+                             90 ;mz80_lib\src\system\system.c:26: void init(){
+                             91 ;	---------------------------------
+                             92 ; Function init
+                             93 ; ---------------------------------
+   0014                      94 _init_start::
+   0014                      95 _init:
+                             96 ;mz80_lib\src\system\system.c:28: is_init = true;
+   0014 21r00r00      [10]   97 	ld	hl,#_is_init + 0
+   0017 36 01         [10]   98 	ld	(hl), #0x01
+                             99 ;mz80_lib\src\system\system.c:29: init_io();
+   0019 C3r0Er00      [10]  100 	jp	_init_io
+   001C                     101 _init_end::
+                            102 ;mz80_lib\src\system\system.c:32: void clock_throttle(char option){
+                            103 ;	---------------------------------
+                            104 ; Function clock_throttle
+                            105 ; ---------------------------------
+   001C                     106 _clock_throttle_start::
+   001C                     107 _clock_throttle:
+                            108 ;mz80_lib\src\system\system.c:33: out(CLOCK_THROTTLE,option);
+   001C 21 02 00      [10]  109 	ld	hl, #2+0
+   001F 39            [11]  110 	add	hl, sp
+   0020 56            [ 7]  111 	ld	d, (hl)
+   0021 1E 1C         [ 7]  112 	ld	e,#0x1C
+   0023 D5            [11]  113 	push	de
+   0024 CDr00r00      [17]  114 	call	_out
+   0027 F1            [10]  115 	pop	af
+   0028 C9            [10]  116 	ret
+   0029                     117 _clock_throttle_end::
+                            118 ;mz80_lib\src\system\system.c:36: void delay_ms(char ms){
+                            119 ;	---------------------------------
+                            120 ; Function delay_ms
+                            121 ; ---------------------------------
+   0029                     122 _delay_ms_start::
+   0029                     123 _delay_ms:
+                            124 ;mz80_lib\src\system\system.c:38: for(i=0;i<ms;i++){} // THIS FUNCTION IS VERY INACCURATE
+   0029 16 00         [ 7]  125 	ld	d,#0x00
+   002B                     126 00103$:
+   002B 21 02 00      [10]  127 	ld	hl,#2
+   002E 39            [11]  128 	add	hl,sp
+   002F 7A            [ 4]  129 	ld	a,d
+   0030 96            [ 7]  130 	sub	a, (hl)
+   0031 E2r36r00      [10]  131 	jp	PO, 00116$
+   0034 EE 80         [ 7]  132 	xor	a, #0x80
+   0036                     133 00116$:
+   0036 F0            [11]  134 	ret	P
+   0037 14            [ 4]  135 	inc	d
+   0038 18 F1         [12]  136 	jr	00103$
+   003A C9            [10]  137 	ret
+   003B                     138 _delay_ms_end::
+                            139 ;mz80_lib\src\system\system.c:41: void delay_sec(char sec){
+                            140 ;	---------------------------------
+                            141 ; Function delay_sec
+                            142 ; ---------------------------------
+   003B                     143 _delay_sec_start::
+   003B                     144 _delay_sec:
+                            145 ;mz80_lib\src\system\system.c:43: for(i=0;i<sec;i++) delay_ms(DELAY_1SEC);
+   003B 16 00         [ 7]  146 	ld	d,#0x00
+   003D                     147 00103$:
+   003D 21 02 00      [10]  148 	ld	hl,#2
+   0040 39            [11]  149 	add	hl,sp
+   0041 7A            [ 4]  150 	ld	a,d
+   0042 96            [ 7]  151 	sub	a, (hl)
+   0043 E2r48r00      [10]  152 	jp	PO, 00116$
+   0046 EE 80         [ 7]  153 	xor	a, #0x80
+   0048                     154 00116$:
+   0048 F0            [11]  155 	ret	P
+   0049 D5            [11]  156 	push	de
+   004A 3E 14         [ 7]  157 	ld	a,#0x14
+   004C F5            [11]  158 	push	af
+   004D 33            [ 6]  159 	inc	sp
+   004E CDr29r00      [17]  160 	call	_delay_ms
+   0051 33            [ 6]  161 	inc	sp
+   0052 D1            [10]  162 	pop	de
+   0053 14            [ 4]  163 	inc	d
+   0054 18 E7         [12]  164 	jr	00103$
+   0056 C9            [10]  165 	ret
+   0057                     166 _delay_sec_end::
+                            167 ;mz80_lib\src\system\system.c:46: void end(){
+                            168 ;	---------------------------------
+                            169 ; Function end
+                            170 ; ---------------------------------
+   0057                     171 _end_start::
+   0057                     172 _end:
+   0057                     173 00103$:
+   0057 18 FE         [12]  174 	jr	00103$
+   0059                     175 _end_end::
+                            176 	.area _CODE
+                            177 	.area _INITIALIZER
+   0000                     178 __xinit__is_init:
+   0000 00                  179 	.db #0x00	; 0
+                            180 	.area _CABS (ABS)

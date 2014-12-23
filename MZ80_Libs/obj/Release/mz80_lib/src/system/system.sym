@@ -7,20 +7,21 @@ Symbol Table
     .__.ABS.                                                    =  0000 G
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
-  0 _clock_throttle                                                0017 GR
-  0 _clock_throttle_end                                            0024 GR
-  0 _clock_throttle_start                                          0017 GR
-  0 _delay_ms                                                      0024 GR
-  0 _delay_ms_end                                                  0036 GR
-  0 _delay_ms_start                                                0024 GR
-  0 _delay_sec                                                     0036 GR
-  0 _delay_sec_end                                                 0052 GR
-  0 _delay_sec_start                                               0036 GR
-  0 _end                                                           0052 GR
-  0 _end_end                                                       0054 GR
-  0 _end_start                                                     0052 GR
+  7 __xinit__is_init                                               0000 R
+  0 _clock_throttle                                                001C GR
+  0 _clock_throttle_end                                            0029 GR
+  0 _clock_throttle_start                                          001C GR
+  0 _delay_ms                                                      0029 GR
+  0 _delay_ms_end                                                  003B GR
+  0 _delay_ms_start                                                0029 GR
+  0 _delay_sec                                                     003B GR
+  0 _delay_sec_end                                                 0057 GR
+  0 _delay_sec_start                                               003B GR
+  0 _end                                                           0057 GR
+  0 _end_end                                                       0059 GR
+  0 _end_start                                                     0057 GR
   0 _init                                                          0014 GR
-  0 _init_end                                                      0017 GR
+  0 _init_end                                                      001C GR
   0 _init_io                                                       000E GR
   0 _init_io_end                                                   0014 GR
   0 _init_io_start                                                 000E GR
@@ -31,6 +32,7 @@ Symbol Table
   0 _init_pio_end                                                  0005 GR
   0 _init_pio_start                                                0000 GR
   0 _init_start                                                    0014 GR
+  2 _is_init                                                       0000 GR
     _out                                                           **** GX
 
 
@@ -39,13 +41,13 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   54   flags    0
+   0 _CODE                                      size   59   flags    0
    1 _DATA                                      size    0   flags    0
-   2 _INITIALIZED                               size    0   flags    0
+   2 _INITIALIZED                               size    1   flags    0
    3 _DABS                                      size    0   flags    8
    4 _HOME                                      size    0   flags    0
    5 _GSINIT                                    size    0   flags    0
    6 _GSFINAL                                   size    0   flags    0
-   7 _INITIALIZER                               size    0   flags    0
+   7 _INITIALIZER                               size    1   flags    0
    8 _CABS                                      size    0   flags    8
 

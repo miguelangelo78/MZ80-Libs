@@ -1,36 +1,36 @@
 #include "..\..\..\..\include\io\io.h"
 
-void out(char address,char data){
+void out(size_c address,size_c data){
 	address,data;
 	__asm
-		PUSH BC
-		LD B,D
-		LD C,E
-		OUT (C),B
+		POP DE
 		POP BC
+		OUT (C),B
+		PUSH BC
+		PUSH DE
 	__endasm;
 }
 
-void out_array(char address,char * data,int length){
+void out_array(size_c address,size_c * data,int length){
 	int i;
 	for(i=0;i<length;i++)
 		out(address,*data++);
 }
 
-void port_out(char data){
+void port_out(size_c data){
 	data;
 	__asm
 		OUT (#PIO_OUT),A
 	__endasm;
 }
 
-void port_out_array(char * data, int length){
+void port_out_array(size_c * data, int length){
 	int i;
 	for(i=0;i<length;i++)
 		port_out(*data++);
 }
 
-char port_in(){
+size_c port_in(){
 	__asm
 		IN A,(PIO_IN)
 		LD L,A
@@ -39,7 +39,7 @@ char port_in(){
 	return 0; // This will not run
 }
 
-char* port_in_array(int length){
+size_c* port_in_array(int length){
 	length;
 	// TODO: ALLOCATE MEMORY AND RETURN THE POINTER OF THE FIRST ELEMENT
 	return "";

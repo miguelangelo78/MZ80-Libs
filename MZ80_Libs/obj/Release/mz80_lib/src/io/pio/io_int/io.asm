@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
-; This file was generated Tue Dec 23 03:03:10 2014
+; This file was generated Tue Dec 23 18:07:57 2014
 ;--------------------------------------------------------
 	.module io
 	.optsdcc -mz80
@@ -46,21 +46,21 @@
 ; code
 ;--------------------------------------------------------
 	.area _CODE
-;mz80_lib\src\io\pio\io_int\io.c:3: void out(char address,char data){
+;mz80_lib\src\io\pio\io_int\io.c:3: void out(size_c address,size_c data){
 ;	---------------------------------
 ; Function out
 ; ---------------------------------
 _out_start::
 _out:
 ;mz80_lib\src\io\pio\io_int\io.c:11: __endasm;
-	PUSH BC
-	LD B,D
-	LD C,E
-	OUT (C),B
+	POP DE
 	POP BC
+	OUT (C),B
+	PUSH BC
+	PUSH DE
 	ret
 _out_end::
-;mz80_lib\src\io\pio\io_int\io.c:14: void out_array(char address,char * data,int length){
+;mz80_lib\src\io\pio\io_int\io.c:14: void out_array(size_c address,size_c * data,int length){
 ;	---------------------------------
 ; Function out_array
 ; ---------------------------------
@@ -110,7 +110,7 @@ _out_array:
 	jr	00103$
 	ret
 _out_array_end::
-;mz80_lib\src\io\pio\io_int\io.c:20: void port_out(char data){
+;mz80_lib\src\io\pio\io_int\io.c:20: void port_out(size_c data){
 ;	---------------------------------
 ; Function port_out
 ; ---------------------------------
@@ -120,7 +120,7 @@ _port_out:
 	OUT (#0),A
 	ret
 _port_out_end::
-;mz80_lib\src\io\pio\io_int\io.c:27: void port_out_array(char * data, int length){
+;mz80_lib\src\io\pio\io_int\io.c:27: void port_out_array(size_c * data, int length){
 ;	---------------------------------
 ; Function port_out_array
 ; ---------------------------------
@@ -165,7 +165,7 @@ _port_out_array:
 	jr	00103$
 	ret
 _port_out_array_end::
-;mz80_lib\src\io\pio\io_int\io.c:33: char port_in(){
+;mz80_lib\src\io\pio\io_int\io.c:33: size_c port_in(){
 ;	---------------------------------
 ; Function port_in
 ; ---------------------------------
@@ -179,7 +179,7 @@ _port_in:
 	ld	l,#0x00
 	ret
 _port_in_end::
-;mz80_lib\src\io\pio\io_int\io.c:42: char* port_in_array(int length){
+;mz80_lib\src\io\pio\io_int\io.c:42: size_c* port_in_array(int length){
 ;	---------------------------------
 ; Function port_in_array
 ; ---------------------------------

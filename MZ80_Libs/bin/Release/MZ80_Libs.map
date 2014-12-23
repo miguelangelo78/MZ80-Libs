@@ -36,28 +36,28 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000002  l__HEADER6                      
      00000002  l__HEADER7                      
      00000003  l__HEADER0                      
-     00000004  l__INITIALIZED                  
-     00000004  l__INITIALIZER                  
+     00000005  l__INITIALIZED                  
+     00000005  l__INITIALIZER                  
      00000009  l__HEADER8                      
      0000000F  l__GSINIT                       
      00000200  s__CODE                         
      00000400  l__DATA                         
-     0000048F  l__CODE                         
-     0000068F  s__HOME                         
-     0000068F  s__INITIALIZER                  
-     00000693  s__GSINIT                       
-     000006A2  s__GSFINAL                      
+     00000500  l__CODE                         
+     00000700  s__HOME                         
+     00000700  s__INITIALIZER                  
+     00000705  s__GSINIT                       
+     00000714  s__GSFINAL                      
      00008000  s__DATA                         
      00008400  s__INITIALIZED                  
-     00008404  s__BSEG                         
-     00008404  s__BSS                          
-     00008404  s__HEAP                         
+     00008405  s__BSEG                         
+     00008405  s__BSS                          
+     00008405  s__HEAP                         
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000048F =        1167. bytes (REL,CON)
+_CODE                               00000200    00000500 =        1280. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -65,150 +65,189 @@ _CODE                               00000200    0000048F =        1167. bytes (R
      00000204  _exit                              crt0
      0000020D  _main                              main
      0000020D  _main_start                        main
-     0000023A  _main_end                          main
-     0000023A  _out                               io
-     0000023A  _out_start                         io
-     00000241  _out_array                         io
-     00000241  _out_array_start                   io
-     00000241  _out_end                           io
-     00000283  _out_array_end                     io
-     00000283  _port_out                          io
-     00000283  _port_out_start                    io
-     00000286  _port_out_array                    io
-     00000286  _port_out_array_start              io
-     00000286  _port_out_end                      io
-     000002B9  _port_in                           io
-     000002B9  _port_in_start                     io
-     000002B9  _port_out_array_end                io
-     000002C0  _port_in_array                     io
-     000002C0  _port_in_array_start               io
-     000002C0  _port_in_end                       io
-     000002C4  _port_in_array_end                 io
-     000002C5  _lcd_print_char                    lcd
-     000002C5  _lcd_print_char_start              lcd
-     000002D2  _lcd_print_char_end                lcd
-     000002D2  _lcd_print_str                     lcd
-     000002D2  _lcd_print_str_start               lcd
-     000002E7  _lcd_clrscr                        lcd
-     000002E7  _lcd_clrscr_start                  lcd
-     000002E7  _lcd_print_str_end                 lcd
-     000002E8  _lcd_clrscr_end                    lcd
-     000002E8  _uart_read_char                    uart
-     000002E8  _uart_read_char_start              uart
-     000002F5  _uart_read_char_end                uart
-     000002F5  _uart_read_str                     uart
-     000002F5  _uart_read_str_start               uart
-     000002F9  _uart_read_str_end                 uart
-     000002FA  _uart_print_char                   uart
-     000002FA  _uart_print_char_start             uart
-     00000309  _uart_print_char_end               uart
-     00000309  _uart_print_str                    uart
-     00000309  _uart_print_str_start              uart
-     00000344  _uart_flush                        uart
-     00000344  _uart_flush_start                  uart
-     00000344  _uart_print_str_end                uart
-     0000034D  _uart_clrscr                       uart
-     0000034D  _uart_clrscr_start                 uart
-     0000034D  _uart_flush_end                    uart
-     0000034E  _uart_begin                        uart
+     0000022C  _main_end                          main
+     0000023F  _out                               io
+     0000023F  _out_start                         io
+     00000246  _out_array                         io
+     00000246  _out_array_start                   io
+     00000246  _out_end                           io
+     00000288  _out_array_end                     io
+     00000288  _port_out                          io
+     00000288  _port_out_start                    io
+     0000028B  _port_out_array                    io
+     0000028B  _port_out_array_start              io
+     0000028B  _port_out_end                      io
+     000002BE  _port_in                           io
+     000002BE  _port_in_start                     io
+     000002BE  _port_out_array_end                io
+     000002C5  _port_in_array                     io
+     000002C5  _port_in_array_start               io
+     000002C5  _port_in_end                       io
+     000002C9  _port_in_array_end                 io
+     000002CA  _lcd_print_char                    lcd
+     000002CA  _lcd_print_char_start              lcd
+     000002D7  _lcd_print_char_end                lcd
+     000002D7  _lcd_print_str                     lcd
+     000002D7  _lcd_print_str_start               lcd
+     000002EC  _lcd_clrscr                        lcd
+     000002EC  _lcd_clrscr_start                  lcd
+     000002EC  _lcd_print_str_end                 lcd
+     000002ED  _lcd_clrscr_end                    lcd
+     000002ED  _uart_read_char                    uart
+     000002ED  _uart_read_char_start              uart
+     000002FA  _uart_read_char_end                uart
+     000002FA  _uart_read_str                     uart
+     000002FA  _uart_read_str_start               uart
+     000002FE  _uart_read_str_end                 uart
+     000002FF  _uart_print_char                   uart
+     000002FF  _uart_print_char_start             uart
+     0000030E  _uart_print_char_end               uart
+     0000030E  _uart_print_str                    uart
+     0000030E  _uart_print_str_start              uart
+     00000324  _uart_flush                        uart
+     00000324  _uart_flush_start                  uart
+     00000324  _uart_print_str_end                uart
+     0000032D  _uart_clrscr                       uart
+     0000032D  _uart_clrscr_start                 uart
+     0000032D  _uart_flush_end                    uart
+     0000032E  _uart_begin                        uart
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000048F =        1167. bytes (REL,CON)
+_CODE                               00000200    00000500 =        1280. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000034E  _uart_begin_start                  uart
-     0000034E  _uart_clrscr_end                   uart
-     00000357  _uart_begin_end                    uart
-     00000357  _uart_end                          uart
-     00000357  _uart_end_start                    uart
-     0000035F  _find_free_block                   alloc
-     0000035F  _find_free_block_start             alloc
-     0000035F  _uart_end_end                      uart
-     0000039F  _find_free_block_end               alloc
-     0000039F  _request_space                     alloc
-     0000039F  _request_space_start               alloc
-     000003F8  _malloc                            alloc
-     000003F8  _malloc_start                      alloc
-     000003F8  _request_space_end                 alloc
-     00000490  _get_block_ptr                     alloc
-     00000490  _get_block_ptr_start               alloc
-     00000490  _malloc_end                        alloc
-     0000049F  _free                              alloc
-     0000049F  _free_start                        alloc
-     0000049F  _get_block_ptr_end                 alloc
-     000004C1  _free_end                          alloc
-     000004C1  _sbrk                              heap
-     000004C1  _sbrk_start                        heap
-     000004E6  _memcpy                            memcpy
-     000004E6  _memcpy_start                      memcpy
-     000004E6  _sbrk_end                          heap
-     00000528  _div                               div
-     00000528  _div_start                         div
-     00000528  _memcpy_end                        memcpy
-     0000053F  _div_end                           div
-     0000053F  _strlen                            string
-     0000053F  _strlen_start                      string
-     0000054A  _strcpy                            string
-     0000054A  _strcpy_start                      string
-     0000054A  _strlen_end                        string
-     00000561  _strcat                            string
-     00000561  _strcat_start                      string
-     00000561  _strcpy_end                        string
-     00000581  _itos                              string
-     00000581  _itos_start                        string
-     00000581  _strcat_end                        string
-     000005D0  _itoc                              string
-     000005D0  _itoc_start                        string
-     000005D0  _itos_end                          string
-     000005E3  _init_pio                          system
-     000005E3  _init_pio_start                    system
-     000005E3  _itoc_end                          string
-     000005E8  _init_lcd                          system
-     000005E8  _init_lcd_start                    system
-     000005E8  _init_pio_end                      system
-     000005F1  _init_io                           system
+     0000032E  _uart_begin_start                  uart
+     0000032E  _uart_clrscr_end                   uart
+     00000337  _uart_begin_end                    uart
+     00000337  _uart_end                          uart
+     00000337  _uart_end_start                    uart
+     0000033F  _find_free_block                   alloc
+     0000033F  _find_free_block_start             alloc
+     0000033F  _uart_end_end                      uart
+     0000037F  _find_free_block_end               alloc
+     0000037F  _request_space                     alloc
+     0000037F  _request_space_start               alloc
+     000003D8  _malloc                            alloc
+     000003D8  _malloc_start                      alloc
+     000003D8  _request_space_end                 alloc
+     00000470  _get_block_ptr                     alloc
+     00000470  _get_block_ptr_start               alloc
+     00000470  _malloc_end                        alloc
+     0000047F  _free                              alloc
+     0000047F  _free_start                        alloc
+     0000047F  _get_block_ptr_end                 alloc
+     000004A1  _free_end                          alloc
+     000004A1  _sbrk                              heap
+     000004A1  _sbrk_start                        heap
+     000004C6  _memcpy                            memcpy
+     000004C6  _memcpy_start                      memcpy
+     000004C6  _sbrk_end                          heap
+     00000508  _memcpy_end                        memcpy
+     00000508  _printf                            printf
+     00000508  _printf_start                      printf
+     0000050B  _lprintf                           printf
+     0000050B  _lprintf_start                     printf
+     0000050B  _printf_end                        printf
+     0000050E  _lprintf_end                       printf
+     0000050E  _puts                              printf
+     0000050E  _puts_start                        printf
+     00000518  _puts_end                          printf
+     00000518  _putsln                            printf
+     00000518  _putsln_start                      printf
+     0000052F  _putc                              printf
+     0000052F  _putc_start                        printf
+     0000052F  _putsln_end                        printf
+     00000540  _putc_end                          printf
+     00000540  _putcln                            printf
+     00000540  _putcln_start                      printf
+     00000559  _lputs                             printf
+     00000559  _lputs_start                       printf
+     00000559  _putcln_end                        printf
+     00000563  _lputs_end                         printf
+     00000563  _lputsln                           printf
+     00000563  _lputsln_start                     printf
+     00000574  _lputc                             printf
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000048F =        1167. bytes (REL,CON)
+_CODE                               00000200    00000500 =        1280. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000005F1  _init_io_start                     system
-     000005F1  _init_lcd_end                      system
-     000005F7  _init                              system
-     000005F7  _init_io_end                       system
-     000005F7  _init_start                        system
-     000005FA  _clock_throttle                    system
-     000005FA  _clock_throttle_start              system
-     000005FA  _init_end                          system
-     00000607  _clock_throttle_end                system
-     00000607  _delay_ms                          system
-     00000607  _delay_ms_start                    system
-     00000619  _delay_ms_end                      system
-     00000619  _delay_sec                         system
-     00000619  _delay_sec_start                   system
-     00000635  _delay_sec_end                     system
-     00000635  _end                               system
-     00000635  _end_start                         system
-     00000637  __moduchar_rrx_s                   
-     00000637  _end_end                           system
-     0000063E  __moduchar_rrx_hds                 
-     00000643  __moduint_rrx_s                    
-     00000649  __moduint_rrx_hds                  
-     0000064E  __divuint_rrx_s                    
-     00000656  __divuchar_rrx_s                   
-     0000065D  __divu8                            
-     0000065D  __divuchar_rrx_hds                 
-     00000660  __divu16                           
-     00000660  __divuint_rrx_hds                  
+     00000574  _lputc_start                       printf
+     00000574  _lputsln_end                       printf
+     00000580  _lputc_end                         printf
+     00000580  _lputcln                           printf
+     00000580  _lputcln_start                     printf
+     00000594  _div                               div
+     00000594  _div_start                         div
+     00000594  _lputcln_end                       printf
+     000005AB  _div_end                           div
+     000005AB  _strlen                            string
+     000005AB  _strlen_start                      string
+     000005B6  _strcpy                            string
+     000005B6  _strcpy_start                      string
+     000005B6  _strlen_end                        string
+     000005CD  _strcat                            string
+     000005CD  _strcat_start                      string
+     000005CD  _strcpy_end                        string
+     000005ED  _itos                              string
+     000005ED  _itos_start                        string
+     000005ED  _strcat_end                        string
+     0000063C  _itoc                              string
+     0000063C  _itoc_start                        string
+     0000063C  _itos_end                          string
+     0000064F  _init_pio                          system
+     0000064F  _init_pio_start                    system
+     0000064F  _itoc_end                          string
+     00000654  _init_lcd                          system
+     00000654  _init_lcd_start                    system
+     00000654  _init_pio_end                      system
+     0000065D  _init_io                           system
+     0000065D  _init_io_start                     system
+     0000065D  _init_lcd_end                      system
+     00000663  _init                              system
+     00000663  _init_io_end                       system
+     00000663  _init_start                        system
+     0000066B  _clock_throttle                    system
+     0000066B  _clock_throttle_start              system
+     0000066B  _init_end                          system
+     00000678  _clock_throttle_end                system
+     00000678  _delay_ms                          system
+     00000678  _delay_ms_start                    system
+     0000068A  _delay_ms_end                      system
+     0000068A  _delay_sec                         system
+     0000068A  _delay_sec_start                   system
+     000006A6  _delay_sec_end                     system
+     000006A6  _end                               system
+     000006A6  _end_start                         system
+     000006A8  __moduchar_rrx_s                   
+     000006A8  _end_end                           system
+     000006AF  __moduchar_rrx_hds                 
+     000006B4  __moduint_rrx_s                    
 ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    00000500 =        1280. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000006BA  __moduint_rrx_hds                  
+     000006BF  __divuint_rrx_s                    
+     000006C7  __divuchar_rrx_s                   
+     000006CE  __divu8                            
+     000006CE  __divuchar_rrx_hds                 
+     000006D1  __divu16                           
+     000006D1  __divuint_rrx_hds                  
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -217,7 +256,7 @@ _HEADER0                            00000000    00000003 =           3. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -226,7 +265,7 @@ _HEADER1                            00000000    00000002 =           2. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -235,7 +274,7 @@ _HEADER2                            00000000    00000002 =           2. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -244,7 +283,7 @@ _HEADER3                            00000000    00000002 =           2. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -253,7 +292,7 @@ _HEADER4                            00000000    00000002 =           2. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -262,7 +301,7 @@ _HEADER5                            00000000    00000002 =           2. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -271,7 +310,7 @@ _HEADER6                            00000000    00000002 =           2. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -280,7 +319,7 @@ _HEADER7                            00000000    00000002 =           2. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -289,36 +328,36 @@ _HEADER8                            00000000    00000009 =           9. bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
-Hexadecimal  [32-Bits]
-
-Area                                    Addr        Size        Decimal Bytes (Attributes)
---------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZER                        0000068F    00000004 =           4. bytes (REL,CON)
-
-      Value  Global                              Global Defined In Module
-      -----  --------------------------------   ------------------------
 ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_GSINIT                             00000693    0000000F =          15. bytes (REL,CON)
+_INITIALIZER                        00000700    00000005 =           5. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00000693  gsinit                             crt0
-
 ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_GSFINAL                            000006A2    00000001 =           1. bytes (REL,CON)
+_GSINIT                             00000705    0000000F =          15. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
+     00000705  gsinit                             crt0
+
 ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_GSFINAL                            00000714    00000001 =           1. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -329,19 +368,19 @@ _DATA                               00008000    00000400 =        1024. bytes (R
       -----  --------------------------------   ------------------------
      00008000  _HEAP                              heap
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZED                        00008400    00000004 =           4. bytes (REL,CON)
+_INITIALIZED                        00008400    00000005 =           5. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
      00008400  _heap_head                         heap
      00008402  _global_base                       heap
-
-ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
+     00008404  _is_init                           system
+ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
 
 Files Linked                              [ module(s) ]
 
@@ -358,9 +397,11 @@ obj\Release\mz80_lib\src\memory\alloc.rel
 obj\Release\mz80_lib\src\memory\heap.rel  [ heap ]
 obj\Release\mz80_lib\src\memory\memcpy.rel
                                           [ memcpy ]
-obj\Release\mz80_lib\src\stdlib\math\div.rel
+obj\Release\mz80_lib\src\std\stdio\printf.rel
+                                          [ printf ]
+obj\Release\mz80_lib\src\std\stdlib\math\div.rel
                                           [ div ]
-obj\Release\mz80_lib\src\stdlib\string\string.rel
+obj\Release\mz80_lib\src\std\stdlib\string\string.rel
                                           [ string ]
 obj\Release\mz80_lib\src\system\system.rel
                                           [ system ]
@@ -373,7 +414,7 @@ C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
 C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
                                           [ divunsigned.rel ]
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 21.
 
 User Base Address Definitions
 

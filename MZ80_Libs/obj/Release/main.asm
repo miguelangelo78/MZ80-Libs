@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
-; This file was generated Tue Dec 23 03:03:37 2014
+; This file was generated Tue Dec 23 18:07:57 2014
 ;--------------------------------------------------------
 	.module main
 	.optsdcc -mz80
@@ -10,11 +10,10 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _main
-	.globl _itos
-	.globl _uart_print_str
-	.globl _uart_print_char
-	.globl _uart_end
-	.globl _uart_begin
+	.globl _puts
+	.globl _lcd_print_str
+	.globl _init
+	.globl _strcpy
 ;--------------------------------------------------------
 ; special function registers
 ;--------------------------------------------------------
@@ -46,46 +45,41 @@
 ; code
 ;--------------------------------------------------------
 	.area _CODE
-;main.c:8: void main(){
+;main.c:10: void main(){
 ;	---------------------------------
 ; Function main
 ; ---------------------------------
 _main_start::
 _main:
-;main.c:12: str=  (char *)0x2000;
-	ld	de,#0x2000
-	ld	b,#0x01
-00102$:
-;main.c:15: itos(i,str,10);
-	push	bc
-	push	de
-	ld	a,#0x0A
-	push	af
-	inc	sp
-	push	de
-	push	bc
-	inc	sp
-	call	_itos
+;main.c:13: init();
+	call	_init
+;main.c:15: strcpy(str,"COPIED");
+	ld	hl,#___str_0
+	push	hl
+	ld	hl,#0x2000
+	push	hl
+	call	_strcpy
 	pop	af
+;main.c:16: puts("testa");
+	ld	hl, #___str_1
+	ex	(sp),hl
+	call	_puts
+;main.c:17: lcd_print_str("teste");
+	ld	hl, #___str_2
+	ex	(sp),hl
+	call	_lcd_print_str
 	pop	af
-	pop	de
-	push	de
-	push	de
-	call	_uart_print_str
-	pop	af
-	call	_uart_begin
-	ld	a,#0x0D
-	push	af
-	inc	sp
-	call	_uart_print_char
-	inc	sp
-	call	_uart_end
-	pop	de
-	pop	bc
-;main.c:14: for(;;i++){
-	inc	b
-	jr	00102$
+	ret
 _main_end::
+___str_0:
+	.ascii "COPIED"
+	.db 0x00
+___str_1:
+	.ascii "testa"
+	.db 0x00
+___str_2:
+	.ascii "teste"
+	.db 0x00
 	.area _CODE
 	.area _INITIALIZER
 	.area _CABS (ABS)

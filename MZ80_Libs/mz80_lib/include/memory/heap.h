@@ -1,6 +1,6 @@
 #ifndef HEAP_H
 #define HEAP_H
-#include "..\types\stddef.h"
+#include "../std/stddef.h"
 
 extern int heap_head; // INDEX OF THE HEAP'S HEAD
 extern void * global_base; // LAST BLOCK

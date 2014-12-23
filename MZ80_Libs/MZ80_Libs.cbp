@@ -27,6 +27,7 @@
 		<Unit filename="MZ80_Libs.depend" />
 		<Unit filename="MZ80_Libs.layout" />
 		<Unit filename="bin/Release/MZ80_Libs.bin" />
+		<Unit filename="bin/Release/MZ80_Libs.hex" />
 		<Unit filename="bin/Release/MZ80_Libs.lk" />
 		<Unit filename="bin/Release/MZ80_Libs.map" />
 		<Unit filename="bin/Release/MZ80_Libs.noi" />
@@ -35,15 +36,19 @@
 		</Unit>
 		<Unit filename="mz80_lib/include/io/io.h" />
 		<Unit filename="mz80_lib/include/io/lcd.h" />
-		<Unit filename="mz80_lib/include/io/stdio.h" />
 		<Unit filename="mz80_lib/include/io/uart.h" />
 		<Unit filename="mz80_lib/include/memory/alloc.h" />
 		<Unit filename="mz80_lib/include/memory/heap.h" />
-		<Unit filename="mz80_lib/include/stdlib/math/math.h" />
-		<Unit filename="mz80_lib/include/stdlib/stdlib.h" />
-		<Unit filename="mz80_lib/include/stdlib/string/string.h" />
+		<Unit filename="mz80_lib/include/std/iso646.h" />
+		<Unit filename="mz80_lib/include/std/limits.h" />
+		<Unit filename="mz80_lib/include/std/math/math.h" />
+		<Unit filename="mz80_lib/include/std/stdarg.h" />
+		<Unit filename="mz80_lib/include/std/stdbool.h" />
+		<Unit filename="mz80_lib/include/std/stddef.h" />
+		<Unit filename="mz80_lib/include/std/stdio.h" />
+		<Unit filename="mz80_lib/include/std/stdlib.h" />
+		<Unit filename="mz80_lib/include/std/string/string.h" />
 		<Unit filename="mz80_lib/include/system/system.h" />
-		<Unit filename="mz80_lib/include/types/stddef.h" />
 		<Unit filename="mz80_lib/lib/README.txt" />
 		<Unit filename="mz80_lib/src/io/pio/io_int/io.c">
 			<Option compilerVar="CC" />
@@ -63,23 +68,17 @@
 		<Unit filename="mz80_lib/src/memory/memcpy.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="mz80_lib/src/stdlib/math/div.c">
+		<Unit filename="mz80_lib/src/std/stdio/printf.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="mz80_lib/src/stdlib/string/string.c">
+		<Unit filename="mz80_lib/src/std/stdlib/math/div.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/src/std/stdlib/string/string.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="mz80_lib/src/system/system.c">
 			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="obj/Release/main.asm">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="obj/Release/main.lst">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="obj/Release/main.sym">
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>
 			<code_completion />

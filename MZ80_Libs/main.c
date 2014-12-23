@@ -1,21 +1,18 @@
 #include "mz80_lib/include/system/system.h"
-#include "mz80_lib/include/io/stdio.h"
+#include "mz80_lib/include/std/stdio.h"
 #include "mz80_lib/include/memory/alloc.h"
-#include "mz80_lib/include/stdlib/stdlib.h"
-#include "mz80_lib/include/stdlib/string/string.h"
-#include "mz80_lib/include/stdlib/math/math.h"
+#include "mz80_lib/include/std/stdlib.h"
+#include "mz80_lib/include/std/string/string.h"
+#include "mz80_lib/include/std/math/math.h"
+#include "mz80_lib/include/std/stdarg.h"
+#include "mz80_lib/include/std/stdbool.h"
 
 void main(){
-	char * str;
+    char * str;
 	unsigned char i = 1;
-
-    str=  (char *)0x2000;
-
-	for(;;i++){
-		itos(i,str,10);
-		uart_print_str(str);
-		uart_begin();
-		uart_print_char(13);
-		uart_end();
-	}
+    init();
+	str = (char *) 0x2000;
+    strcpy(str,"COPIED");
+    puts("testa");
+    lcd_print_str("teste");
 }

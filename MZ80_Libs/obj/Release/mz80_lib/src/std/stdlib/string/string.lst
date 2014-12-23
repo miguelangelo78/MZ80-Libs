@@ -1,0 +1,244 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
+                              4 ; This file was generated Tue Dec 23 17:39:57 2014
+                              5 ;--------------------------------------------------------
+                              6 	.module string
+                              7 	.optsdcc -mz80
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _div
+                             13 	.globl _strlen
+                             14 	.globl _strcpy
+                             15 	.globl _strcat
+                             16 	.globl _itos
+                             17 	.globl _itoc
+                             18 ;--------------------------------------------------------
+                             19 ; special function registers
+                             20 ;--------------------------------------------------------
+                             21 ;--------------------------------------------------------
+                             22 ; ram data
+                             23 ;--------------------------------------------------------
+                             24 	.area _DATA
+                             25 ;--------------------------------------------------------
+                             26 ; ram data
+                             27 ;--------------------------------------------------------
+                             28 	.area _INITIALIZED
+                             29 ;--------------------------------------------------------
+                             30 ; absolute external ram data
+                             31 ;--------------------------------------------------------
+                             32 	.area _DABS (ABS)
+                             33 ;--------------------------------------------------------
+                             34 ; global & static initialisations
+                             35 ;--------------------------------------------------------
+                             36 	.area _HOME
+                             37 	.area _GSINIT
+                             38 	.area _GSFINAL
+                             39 	.area _GSINIT
+                             40 ;--------------------------------------------------------
+                             41 ; Home
+                             42 ;--------------------------------------------------------
+                             43 	.area _HOME
+                             44 	.area _HOME
+                             45 ;--------------------------------------------------------
+                             46 ; code
+                             47 ;--------------------------------------------------------
+                             48 	.area _CODE
+                             49 ;mz80_lib\src\std\stdlib\string\string.c:3: int strlen(char * str){
+                             50 ;	---------------------------------
+                             51 ; Function strlen
+                             52 ; ---------------------------------
+   0000                      53 _strlen_start::
+   0000                      54 _strlen:
+                             55 ;mz80_lib\src\std\stdlib\string\string.c:5: while(*str++,len++);
+   0000 21 00 00      [10]   56 	ld	hl,#0x0000
+   0003                      57 00101$:
+   0003 55            [ 4]   58 	ld	d,l
+   0004 5C            [ 4]   59 	ld	e,h
+   0005 23            [ 6]   60 	inc	hl
+   0006 7B            [ 4]   61 	ld	a,e
+   0007 B2            [ 4]   62 	or	a,d
+   0008 20 F9         [12]   63 	jr	NZ,00101$
+                             64 ;mz80_lib\src\std\stdlib\string\string.c:6: return len;
+   000A C9            [10]   65 	ret
+   000B                      66 _strlen_end::
+                             67 ;mz80_lib\src\std\stdlib\string\string.c:9: char * strcpy(char *d, char *s){
+                             68 ;	---------------------------------
+                             69 ; Function strcpy
+                             70 ; ---------------------------------
+   000B                      71 _strcpy_start::
+   000B                      72 _strcpy:
+                             73 ;mz80_lib\src\std\stdlib\string\string.c:10: register char *d1 = d;
+   000B C1            [10]   74 	pop	bc
+   000C D1            [10]   75 	pop	de
+   000D D5            [11]   76 	push	de
+   000E C5            [11]   77 	push	bc
+                             78 ;mz80_lib\src\std\stdlib\string\string.c:11: while (	*d1++ = *s++);
+   000F 21 04 00      [10]   79 	ld	hl, #4
+   0012 39            [11]   80 	add	hl, sp
+   0013 4E            [ 7]   81 	ld	c, (hl)
+   0014 23            [ 6]   82 	inc	hl
+   0015 46            [ 7]   83 	ld	b, (hl)
+   0016                      84 00101$:
+   0016 0A            [ 7]   85 	ld	a,(bc)
+   0017 03            [ 6]   86 	inc	bc
+   0018 12            [ 7]   87 	ld	(de),a
+   0019 13            [ 6]   88 	inc	de
+   001A B7            [ 4]   89 	or	a, a
+   001B 20 F9         [12]   90 	jr	NZ,00101$
+                             91 ;mz80_lib\src\std\stdlib\string\string.c:12: return d;
+   001D C1            [10]   92 	pop	bc
+   001E E1            [10]   93 	pop	hl
+   001F E5            [11]   94 	push	hl
+   0020 C5            [11]   95 	push	bc
+   0021 C9            [10]   96 	ret
+   0022                      97 _strcpy_end::
+                             98 ;mz80_lib\src\std\stdlib\string\string.c:15: char * strcat(char * dest,char *src){
+                             99 ;	---------------------------------
+                            100 ; Function strcat
+                            101 ; ---------------------------------
+   0022                     102 _strcat_start::
+   0022                     103 _strcat:
+                            104 ;mz80_lib\src\std\stdlib\string\string.c:16: char * cp = dest;
+   0022 D1            [10]  105 	pop	de
+   0023 C1            [10]  106 	pop	bc
+   0024 C5            [11]  107 	push	bc
+   0025 D5            [11]  108 	push	de
+                            109 ;mz80_lib\src\std\stdlib\string\string.c:17: while(*cp) cp++; 		// FIND END
+   0026                     110 00101$:
+   0026 0A            [ 7]  111 	ld	a,(bc)
+   0027 B7            [ 4]  112 	or	a, a
+   0028 28 03         [12]  113 	jr	Z,00112$
+   002A 03            [ 6]  114 	inc	bc
+   002B 18 F9         [12]  115 	jr	00101$
+                            116 ;mz80_lib\src\std\stdlib\string\string.c:18: while(*cp = *src++){cp++;} // COPY IT IN THE END OF 'DEST'
+   002D                     117 00112$:
+   002D 21 04 00      [10]  118 	ld	hl, #4
+   0030 39            [11]  119 	add	hl, sp
+   0031 5E            [ 7]  120 	ld	e, (hl)
+   0032 23            [ 6]  121 	inc	hl
+   0033 56            [ 7]  122 	ld	d, (hl)
+   0034                     123 00104$:
+   0034 1A            [ 7]  124 	ld	a,(de)
+   0035 13            [ 6]  125 	inc	de
+   0036 02            [ 7]  126 	ld	(bc),a
+   0037 B7            [ 4]  127 	or	a, a
+   0038 28 03         [12]  128 	jr	Z,00106$
+   003A 03            [ 6]  129 	inc	bc
+   003B 18 F7         [12]  130 	jr	00104$
+   003D                     131 00106$:
+                            132 ;mz80_lib\src\std\stdlib\string\string.c:19: return dest;
+   003D C1            [10]  133 	pop	bc
+   003E E1            [10]  134 	pop	hl
+   003F E5            [11]  135 	push	hl
+   0040 C5            [11]  136 	push	bc
+   0041 C9            [10]  137 	ret
+   0042                     138 _strcat_end::
+                            139 ;mz80_lib\src\std\stdlib\string\string.c:22: char * itos(unsigned char i,char * str,unsigned char radix){
+                            140 ;	---------------------------------
+                            141 ; Function itos
+                            142 ; ---------------------------------
+   0042                     143 _itos_start::
+   0042                     144 _itos:
+                            145 ;mz80_lib\src\std\stdlib\string\string.c:23: char * tmp = str;
+   0042 21 03 00      [10]  146 	ld	hl, #3
+   0045 39            [11]  147 	add	hl, sp
+   0046 4E            [ 7]  148 	ld	c, (hl)
+   0047 23            [ 6]  149 	inc	hl
+   0048 46            [ 7]  150 	ld	b, (hl)
+                            151 ;mz80_lib\src\std\stdlib\string\string.c:24: unsigned char _i  = i;
+   0049 21 02 00      [10]  152 	ld	hl, #2+0
+   004C 39            [11]  153 	add	hl, sp
+   004D 56            [ 7]  154 	ld	d, (hl)
+                            155 ;mz80_lib\src\std\stdlib\string\string.c:26: if(_i==0){
+   004E 7A            [ 4]  156 	ld	a,d
+   004F B7            [ 4]  157 	or	a, a
+   0050 20 08         [12]  158 	jr	NZ,00111$
+                            159 ;mz80_lib\src\std\stdlib\string\string.c:27: *tmp++='0'; *tmp = '\0';
+   0052 3E 30         [ 7]  160 	ld	a,#0x30
+   0054 02            [ 7]  161 	ld	(bc),a
+   0055 03            [ 6]  162 	inc	bc
+   0056 AF            [ 4]  163 	xor	a, a
+   0057 02            [ 7]  164 	ld	(bc),a
+   0058 18 2E         [12]  165 	jr	00106$
+                            166 ;mz80_lib\src\std\stdlib\string\string.c:30: while(_i>0){
+   005A                     167 00111$:
+   005A                     168 00101$:
+   005A 7A            [ 4]  169 	ld	a,d
+   005B B7            [ 4]  170 	or	a, a
+   005C 28 28         [12]  171 	jr	Z,00103$
+                            172 ;mz80_lib\src\std\stdlib\string\string.c:31: *tmp++ = _i%radix+'0';
+   005E C5            [11]  173 	push	bc
+   005F D5            [11]  174 	push	de
+   0060 21 09 00      [10]  175 	ld	hl, #9+0
+   0063 39            [11]  176 	add	hl, sp
+   0064 7E            [ 7]  177 	ld	a, (hl)
+   0065 F5            [11]  178 	push	af
+   0066 33            [ 6]  179 	inc	sp
+   0067 D5            [11]  180 	push	de
+   0068 33            [ 6]  181 	inc	sp
+   0069 CDr00r00      [17]  182 	call	__moduchar_rrx_s
+   006C F1            [10]  183 	pop	af
+   006D 7D            [ 4]  184 	ld	a,l
+   006E D1            [10]  185 	pop	de
+   006F C1            [10]  186 	pop	bc
+   0070 C6 30         [ 7]  187 	add	a, #0x30
+   0072 02            [ 7]  188 	ld	(bc),a
+   0073 03            [ 6]  189 	inc	bc
+                            190 ;mz80_lib\src\std\stdlib\string\string.c:32: _i=div(_i,radix);
+   0074 C5            [11]  191 	push	bc
+   0075 21 07 00      [10]  192 	ld	hl, #7+0
+   0078 39            [11]  193 	add	hl, sp
+   0079 7E            [ 7]  194 	ld	a, (hl)
+   007A F5            [11]  195 	push	af
+   007B 33            [ 6]  196 	inc	sp
+   007C D5            [11]  197 	push	de
+   007D 33            [ 6]  198 	inc	sp
+   007E CDr00r00      [17]  199 	call	_div
+   0081 F1            [10]  200 	pop	af
+   0082 C1            [10]  201 	pop	bc
+   0083 55            [ 4]  202 	ld	d,l
+   0084 18 D4         [12]  203 	jr	00101$
+   0086                     204 00103$:
+                            205 ;mz80_lib\src\std\stdlib\string\string.c:34: *tmp = '\0';
+   0086 AF            [ 4]  206 	xor	a, a
+   0087 02            [ 7]  207 	ld	(bc),a
+   0088                     208 00106$:
+                            209 ;mz80_lib\src\std\stdlib\string\string.c:36: return str;
+   0088 21 03 00      [10]  210 	ld	hl, #3
+   008B 39            [11]  211 	add	hl, sp
+   008C 7E            [ 7]  212 	ld	a, (hl)
+   008D 23            [ 6]  213 	inc	hl
+   008E 66            [ 7]  214 	ld	h, (hl)
+   008F 6F            [ 4]  215 	ld	l, a
+   0090 C9            [10]  216 	ret
+   0091                     217 _itos_end::
+                            218 ;mz80_lib\src\std\stdlib\string\string.c:39: char itoc(unsigned int i,char * ch){
+                            219 ;	---------------------------------
+                            220 ; Function itoc
+                            221 ; ---------------------------------
+   0091                     222 _itoc_start::
+   0091                     223 _itoc:
+                            224 ;mz80_lib\src\std\stdlib\string\string.c:40: char tmp = i+'0';
+   0091 21 02 00      [10]  225 	ld	hl, #2+0
+   0094 39            [11]  226 	add	hl, sp
+   0095 7E            [ 7]  227 	ld	a, (hl)
+   0096 C6 30         [ 7]  228 	add	a, #0x30
+   0098 57            [ 4]  229 	ld	d,a
+                            230 ;mz80_lib\src\std\stdlib\string\string.c:41: *ch = tmp;
+   0099 21 04 00      [10]  231 	ld	hl, #4
+   009C 39            [11]  232 	add	hl, sp
+   009D 7E            [ 7]  233 	ld	a, (hl)
+   009E 23            [ 6]  234 	inc	hl
+   009F 66            [ 7]  235 	ld	h, (hl)
+   00A0 6F            [ 4]  236 	ld	l, a
+   00A1 72            [ 7]  237 	ld	(hl),d
+                            238 ;mz80_lib\src\std\stdlib\string\string.c:42: return tmp;
+   00A2 6A            [ 4]  239 	ld	l,d
+   00A3 C9            [10]  240 	ret
+   00A4                     241 _itoc_end::
+                            242 	.area _CODE
+                            243 	.area _INITIALIZER
+                            244 	.area _CABS (ABS)

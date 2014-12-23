@@ -3,6 +3,9 @@
 
 #include "..\math\math.h"
 
+#define STR_TERM 0
+#define STR_NEWLINE 13
+
 extern int strlen(char * str);
 extern char * strcpy(char *d, char *s);
 extern char * strcat(char * dst,char *src);

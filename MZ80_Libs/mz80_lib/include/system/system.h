@@ -2,6 +2,8 @@
 #define SYSTEM_H
 
 #include "..\io\io.h" // USED FOR THE CLOCK THROTTLER
+#include "../std/stdbool.h"
+#include "../std/string/string.h"
 
 // PIO CONSTANTS:
 #define PIO_CONFIG 130
@@ -35,11 +37,9 @@
 #define CLOCK_THROTTLE 0x4+PIO_DISABLE+PIO_LCD_DIS
 #define DELAY_1SEC 20
 
-// put this defines in other headers:
-#define STR_TERM 0
-#define STR_NEWLINE 13
-
 // INITIALIZATION FUNCTIONS:
+
+extern bool is_init;
 extern void init();
 extern void init_pio();
 extern void init_lcd();

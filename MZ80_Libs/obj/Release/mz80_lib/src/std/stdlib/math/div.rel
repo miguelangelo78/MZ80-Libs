@@ -1,0 +1,33 @@
+XL2
+H 9 areas 4 global symbols
+M div
+O -mz80
+S .__.ABS. Def0000
+A _CODE size 17 flags 0 addr 0
+S _div Def0000
+S _div_start Def0000
+S _div_end Def0017
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 21 02 00 39 56 21 03 00 39 5E 06 00
+R 00 00 00 00
+T 0C 00
+R 00 00 00 00
+T 0C 00 7A BB 38 05 93 57 04 18 F7
+R 00 00 00 00
+T 15 00
+R 00 00 00 00
+T 15 00 68 C9
+R 00 00 00 00
+T 17 00
+R 00 00 00 00

@@ -1,0 +1,241 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
+                              4 ; This file was generated Tue Dec 23 18:07:59 2014
+                              5 ;--------------------------------------------------------
+                              6 	.module printf
+                              7 	.optsdcc -mz80
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _uart_print_str
+                             13 	.globl _uart_print_char
+                             14 	.globl _uart_end
+                             15 	.globl _uart_begin
+                             16 	.globl _lcd_print_str
+                             17 	.globl _lcd_print_char
+                             18 	.globl _printf
+                             19 	.globl _lprintf
+                             20 	.globl _puts
+                             21 	.globl _putsln
+                             22 	.globl _putc
+                             23 	.globl _putcln
+                             24 	.globl _lputs
+                             25 	.globl _lputsln
+                             26 	.globl _lputc
+                             27 	.globl _lputcln
+                             28 ;--------------------------------------------------------
+                             29 ; special function registers
+                             30 ;--------------------------------------------------------
+                             31 ;--------------------------------------------------------
+                             32 ; ram data
+                             33 ;--------------------------------------------------------
+                             34 	.area _DATA
+                             35 ;--------------------------------------------------------
+                             36 ; ram data
+                             37 ;--------------------------------------------------------
+                             38 	.area _INITIALIZED
+                             39 ;--------------------------------------------------------
+                             40 ; absolute external ram data
+                             41 ;--------------------------------------------------------
+                             42 	.area _DABS (ABS)
+                             43 ;--------------------------------------------------------
+                             44 ; global & static initialisations
+                             45 ;--------------------------------------------------------
+                             46 	.area _HOME
+                             47 	.area _GSINIT
+                             48 	.area _GSFINAL
+                             49 	.area _GSINIT
+                             50 ;--------------------------------------------------------
+                             51 ; Home
+                             52 ;--------------------------------------------------------
+                             53 	.area _HOME
+                             54 	.area _HOME
+                             55 ;--------------------------------------------------------
+                             56 ; code
+                             57 ;--------------------------------------------------------
+                             58 	.area _CODE
+                             59 ;mz80_lib\src\std\stdio\printf.c:3: unsigned char printf(const unsigned char * form, ...){
+                             60 ;	---------------------------------
+                             61 ; Function printf
+                             62 ; ---------------------------------
+   0000                      63 _printf_start::
+   0000                      64 _printf:
+                             65 ;mz80_lib\src\std\stdio\printf.c:6: return 0;
+   0000 2E 00         [ 7]   66 	ld	l,#0x00
+   0002 C9            [10]   67 	ret
+   0003                      68 _printf_end::
+                             69 ;mz80_lib\src\std\stdio\printf.c:8: unsigned char lprintf(const unsigned char * form, ...){
+                             70 ;	---------------------------------
+                             71 ; Function lprintf
+                             72 ; ---------------------------------
+   0003                      73 _lprintf_start::
+   0003                      74 _lprintf:
+                             75 ;mz80_lib\src\std\stdio\printf.c:11: return 0;
+   0003 2E 00         [ 7]   76 	ld	l,#0x00
+   0005 C9            [10]   77 	ret
+   0006                      78 _lprintf_end::
+                             79 ;mz80_lib\src\std\stdio\printf.c:14: void puts(unsigned char * str){
+                             80 ;	---------------------------------
+                             81 ; Function puts
+                             82 ; ---------------------------------
+   0006                      83 _puts_start::
+   0006                      84 _puts:
+                             85 ;mz80_lib\src\std\stdio\printf.c:15: uart_print_str(str);
+   0006 C1            [10]   86 	pop	bc
+   0007 E1            [10]   87 	pop	hl
+   0008 E5            [11]   88 	push	hl
+   0009 C5            [11]   89 	push	bc
+   000A E5            [11]   90 	push	hl
+   000B CDr00r00      [17]   91 	call	_uart_print_str
+   000E F1            [10]   92 	pop	af
+   000F C9            [10]   93 	ret
+   0010                      94 _puts_end::
+                             95 ;mz80_lib\src\std\stdio\printf.c:18: void putsln(unsigned char * str){
+                             96 ;	---------------------------------
+                             97 ; Function putsln
+                             98 ; ---------------------------------
+   0010                      99 _putsln_start::
+   0010                     100 _putsln:
+                            101 ;mz80_lib\src\std\stdio\printf.c:19: uart_print_str(str);
+   0010 C1            [10]  102 	pop	bc
+   0011 E1            [10]  103 	pop	hl
+   0012 E5            [11]  104 	push	hl
+   0013 C5            [11]  105 	push	bc
+   0014 E5            [11]  106 	push	hl
+   0015 CDr00r00      [17]  107 	call	_uart_print_str
+   0018 F1            [10]  108 	pop	af
+                            109 ;mz80_lib\src\std\stdio\printf.c:20: uart_begin();
+   0019 CDr00r00      [17]  110 	call	_uart_begin
+                            111 ;mz80_lib\src\std\stdio\printf.c:21: uart_print_char(STR_NEWLINE);
+   001C 3E 0D         [ 7]  112 	ld	a,#0x0D
+   001E F5            [11]  113 	push	af
+   001F 33            [ 6]  114 	inc	sp
+   0020 CDr00r00      [17]  115 	call	_uart_print_char
+   0023 33            [ 6]  116 	inc	sp
+                            117 ;mz80_lib\src\std\stdio\printf.c:22: uart_end();
+   0024 C3r00r00      [10]  118 	jp	_uart_end
+   0027                     119 _putsln_end::
+                            120 ;mz80_lib\src\std\stdio\printf.c:25: void putc(unsigned char c){
+                            121 ;	---------------------------------
+                            122 ; Function putc
+                            123 ; ---------------------------------
+   0027                     124 _putc_start::
+   0027                     125 _putc:
+                            126 ;mz80_lib\src\std\stdio\printf.c:26: uart_begin();
+   0027 CDr00r00      [17]  127 	call	_uart_begin
+                            128 ;mz80_lib\src\std\stdio\printf.c:27: uart_print_char(c);
+   002A 21 02 00      [10]  129 	ld	hl, #2+0
+   002D 39            [11]  130 	add	hl, sp
+   002E 7E            [ 7]  131 	ld	a, (hl)
+   002F F5            [11]  132 	push	af
+   0030 33            [ 6]  133 	inc	sp
+   0031 CDr00r00      [17]  134 	call	_uart_print_char
+   0034 33            [ 6]  135 	inc	sp
+                            136 ;mz80_lib\src\std\stdio\printf.c:28: uart_end();
+   0035 C3r00r00      [10]  137 	jp	_uart_end
+   0038                     138 _putc_end::
+                            139 ;mz80_lib\src\std\stdio\printf.c:31: void putcln(unsigned char c){
+                            140 ;	---------------------------------
+                            141 ; Function putcln
+                            142 ; ---------------------------------
+   0038                     143 _putcln_start::
+   0038                     144 _putcln:
+                            145 ;mz80_lib\src\std\stdio\printf.c:32: uart_begin();
+   0038 CDr00r00      [17]  146 	call	_uart_begin
+                            147 ;mz80_lib\src\std\stdio\printf.c:33: uart_print_char(c);
+   003B 21 02 00      [10]  148 	ld	hl, #2+0
+   003E 39            [11]  149 	add	hl, sp
+   003F 7E            [ 7]  150 	ld	a, (hl)
+   0040 F5            [11]  151 	push	af
+   0041 33            [ 6]  152 	inc	sp
+   0042 CDr00r00      [17]  153 	call	_uart_print_char
+   0045 33            [ 6]  154 	inc	sp
+                            155 ;mz80_lib\src\std\stdio\printf.c:34: uart_print_char(STR_NEWLINE);
+   0046 3E 0D         [ 7]  156 	ld	a,#0x0D
+   0048 F5            [11]  157 	push	af
+   0049 33            [ 6]  158 	inc	sp
+   004A CDr00r00      [17]  159 	call	_uart_print_char
+   004D 33            [ 6]  160 	inc	sp
+                            161 ;mz80_lib\src\std\stdio\printf.c:35: uart_end();
+   004E C3r00r00      [10]  162 	jp	_uart_end
+   0051                     163 _putcln_end::
+                            164 ;mz80_lib\src\std\stdio\printf.c:38: void lputs(unsigned char * str){
+                            165 ;	---------------------------------
+                            166 ; Function lputs
+                            167 ; ---------------------------------
+   0051                     168 _lputs_start::
+   0051                     169 _lputs:
+                            170 ;mz80_lib\src\std\stdio\printf.c:39: lcd_print_str(str);
+   0051 C1            [10]  171 	pop	bc
+   0052 E1            [10]  172 	pop	hl
+   0053 E5            [11]  173 	push	hl
+   0054 C5            [11]  174 	push	bc
+   0055 E5            [11]  175 	push	hl
+   0056 CDr00r00      [17]  176 	call	_lcd_print_str
+   0059 F1            [10]  177 	pop	af
+   005A C9            [10]  178 	ret
+   005B                     179 _lputs_end::
+                            180 ;mz80_lib\src\std\stdio\printf.c:42: void lputsln(unsigned char * str){
+                            181 ;	---------------------------------
+                            182 ; Function lputsln
+                            183 ; ---------------------------------
+   005B                     184 _lputsln_start::
+   005B                     185 _lputsln:
+                            186 ;mz80_lib\src\std\stdio\printf.c:43: lcd_print_str(str);
+   005B C1            [10]  187 	pop	bc
+   005C E1            [10]  188 	pop	hl
+   005D E5            [11]  189 	push	hl
+   005E C5            [11]  190 	push	bc
+   005F E5            [11]  191 	push	hl
+   0060 CDr00r00      [17]  192 	call	_lcd_print_str
+                            193 ;mz80_lib\src\std\stdio\printf.c:44: lcd_print_char(STR_NEWLINE);
+   0063 26 0D         [ 7]  194 	ld	h,#0x0D
+   0065 E3            [19]  195 	ex	(sp),hl
+   0066 33            [ 6]  196 	inc	sp
+   0067 CDr00r00      [17]  197 	call	_lcd_print_char
+   006A 33            [ 6]  198 	inc	sp
+   006B C9            [10]  199 	ret
+   006C                     200 _lputsln_end::
+                            201 ;mz80_lib\src\std\stdio\printf.c:47: void lputc(unsigned char c){
+                            202 ;	---------------------------------
+                            203 ; Function lputc
+                            204 ; ---------------------------------
+   006C                     205 _lputc_start::
+   006C                     206 _lputc:
+                            207 ;mz80_lib\src\std\stdio\printf.c:48: lcd_print_char(c);
+   006C 21 02 00      [10]  208 	ld	hl, #2+0
+   006F 39            [11]  209 	add	hl, sp
+   0070 7E            [ 7]  210 	ld	a, (hl)
+   0071 F5            [11]  211 	push	af
+   0072 33            [ 6]  212 	inc	sp
+   0073 CDr00r00      [17]  213 	call	_lcd_print_char
+   0076 33            [ 6]  214 	inc	sp
+   0077 C9            [10]  215 	ret
+   0078                     216 _lputc_end::
+                            217 ;mz80_lib\src\std\stdio\printf.c:50: void lputcln(unsigned char c){
+                            218 ;	---------------------------------
+                            219 ; Function lputcln
+                            220 ; ---------------------------------
+   0078                     221 _lputcln_start::
+   0078                     222 _lputcln:
+                            223 ;mz80_lib\src\std\stdio\printf.c:51: lcd_print_char(c);
+   0078 21 02 00      [10]  224 	ld	hl, #2+0
+   007B 39            [11]  225 	add	hl, sp
+   007C 7E            [ 7]  226 	ld	a, (hl)
+   007D F5            [11]  227 	push	af
+   007E 33            [ 6]  228 	inc	sp
+   007F CDr00r00      [17]  229 	call	_lcd_print_char
+   0082 33            [ 6]  230 	inc	sp
+                            231 ;mz80_lib\src\std\stdio\printf.c:52: lcd_print_char(STR_NEWLINE);
+   0083 3E 0D         [ 7]  232 	ld	a,#0x0D
+   0085 F5            [11]  233 	push	af
+   0086 33            [ 6]  234 	inc	sp
+   0087 CDr00r00      [17]  235 	call	_lcd_print_char
+   008A 33            [ 6]  236 	inc	sp
+   008B C9            [10]  237 	ret
+   008C                     238 _lputcln_end::
+                            239 	.area _CODE
+                            240 	.area _INITIALIZER
+                            241 	.area _CABS (ABS)

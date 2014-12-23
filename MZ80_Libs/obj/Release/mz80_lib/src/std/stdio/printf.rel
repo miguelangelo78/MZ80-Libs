@@ -1,0 +1,140 @@
+XL2
+H 9 areas 25 global symbols
+M printf
+O -mz80
+S _lcd_print_str Ref0000
+S _lcd_print_char Ref0000
+S .__.ABS. Def0000
+S _uart_print_str Ref0000
+S _uart_print_char Ref0000
+S _uart_end Ref0000
+S _uart_begin Ref0000
+A _CODE size 8C flags 0 addr 0
+S _puts_end Def0010
+S _putcln_start Def0038
+S _putsln Def0010
+S _lputsln_end Def006C
+S _lputc Def006C
+S _printf_end Def0003
+S _putcln_end Def0051
+S _putsln_start Def0010
+S _lputc_start Def006C
+S _lputs Def0051
+S _putsln_end Def0027
+S _putc Def0027
+S _lputc_end Def0078
+S _lprintf Def0003
+S _lputcln Def0078
+S _lputs_start Def0051
+S _putc_start Def0027
+S _lprintf_start Def0003
+S _puts Def0006
+S _lputs_end Def005B
+S _lputcln_start Def0078
+S _putc_end Def0038
+S _lputsln Def005B
+S _printf Def0000
+S _lprintf_end Def0006
+S _putcln Def0038
+S _lputcln_end Def008C
+S _puts_start Def0006
+S _lputsln_start Def005B
+S _printf_start Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 2E 00 C9
+R 00 00 00 00
+T 03 00
+R 00 00 00 00
+T 03 00
+R 00 00 00 00
+T 03 00
+R 00 00 00 00
+T 03 00 2E 00 C9
+R 00 00 00 00
+T 06 00
+R 00 00 00 00
+T 06 00
+R 00 00 00 00
+T 06 00
+R 00 00 00 00
+T 06 00 C1 E1 E5 C5 E5 CD 00 00 F1 C9
+R 00 00 00 00 02 08 03 00
+T 10 00
+R 00 00 00 00
+T 10 00
+R 00 00 00 00
+T 10 00
+R 00 00 00 00
+T 10 00 C1 E1 E5 C5 E5 CD 00 00 F1 CD 00 00 3E 0D
+R 00 00 00 00 02 08 03 00 02 0C 06 00
+T 1E 00 F5 33 CD 00 00 33 C3 00 00
+R 00 00 00 00 02 05 04 00 02 09 05 00
+T 27 00
+R 00 00 00 00
+T 27 00
+R 00 00 00 00
+T 27 00
+R 00 00 00 00
+T 27 00 CD 00 00 21 02 00 39 7E F5 33 CD 00 00 33
+R 00 00 00 00 02 03 06 00 02 0D 04 00
+T 35 00 C3 00 00
+R 00 00 00 00 02 03 05 00
+T 38 00
+R 00 00 00 00
+T 38 00
+R 00 00 00 00
+T 38 00
+R 00 00 00 00
+T 38 00 CD 00 00 21 02 00 39 7E F5 33 CD 00 00 33
+R 00 00 00 00 02 03 06 00 02 0D 04 00
+T 46 00 3E 0D F5 33 CD 00 00 33 C3 00 00
+R 00 00 00 00 02 07 04 00 02 0B 05 00
+T 51 00
+R 00 00 00 00
+T 51 00
+R 00 00 00 00
+T 51 00
+R 00 00 00 00
+T 51 00 C1 E1 E5 C5 E5 CD 00 00 F1 C9
+R 00 00 00 00 02 08 00 00
+T 5B 00
+R 00 00 00 00
+T 5B 00
+R 00 00 00 00
+T 5B 00
+R 00 00 00 00
+T 5B 00 C1 E1 E5 C5 E5 CD 00 00 26 0D E3 33 CD
+R 00 00 00 00 02 08 00 00
+T 68 00 00 00 33 C9
+R 00 00 00 00 02 02 01 00
+T 6C 00
+R 00 00 00 00
+T 6C 00
+R 00 00 00 00
+T 6C 00
+R 00 00 00 00
+T 6C 00 21 02 00 39 7E F5 33 CD 00 00 33 C9
+R 00 00 00 00 02 0A 01 00
+T 78 00
+R 00 00 00 00
+T 78 00
+R 00 00 00 00
+T 78 00
+R 00 00 00 00
+T 78 00 21 02 00 39 7E F5 33 CD 00 00 33 3E 0D F5
+R 00 00 00 00 02 0A 01 00
+T 86 00 33 CD 00 00 33 C9
+R 00 00 00 00 02 04 01 00
+T 8C 00
+R 00 00 00 00

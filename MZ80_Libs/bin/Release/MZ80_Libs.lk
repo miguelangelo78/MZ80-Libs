@@ -12,8 +12,9 @@ obj\Release\mz80_lib\src\io\sio\uart\uart.rel
 obj\Release\mz80_lib\src\memory\alloc.rel
 obj\Release\mz80_lib\src\memory\heap.rel
 obj\Release\mz80_lib\src\memory\memcpy.rel
-obj\Release\mz80_lib\src\stdlib\math\div.rel
-obj\Release\mz80_lib\src\stdlib\string\string.rel
+obj\Release\mz80_lib\src\std\stdio\printf.rel
+obj\Release\mz80_lib\src\std\stdlib\math\div.rel
+obj\Release\mz80_lib\src\std\stdlib\string\string.rel
 obj\Release\mz80_lib\src\system\system.rel
 
 -e

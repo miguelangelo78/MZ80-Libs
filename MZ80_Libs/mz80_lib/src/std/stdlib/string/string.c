@@ -1,4 +1,4 @@
-#include "..\..\..\include\stdlib\string\string.h"
+#include "../../../../include/std/string/string.h"
 
 int strlen(char * str){
 	register int len = 0;
@@ -22,11 +22,11 @@ char * strcat(char * dest,char *src){
 char * itos(unsigned char i,char * str,unsigned char radix){
 	char * tmp = str;
 	unsigned char _i  = i;
-	
-	if(_i==0){ 
+
+	if(_i==0){
 		*tmp++='0'; *tmp = '\0';
 	}else{
-	
+
 		while(_i>0){
 				*tmp++ = _i%radix+'0';
 				_i=div(_i,radix);

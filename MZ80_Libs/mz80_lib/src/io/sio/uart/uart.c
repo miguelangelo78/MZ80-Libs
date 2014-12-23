@@ -1,6 +1,6 @@
 #include "..\..\..\..\include\io\uart.h"
 
-char uart_read_char(){
+size_c uart_read_char(){
 	__asm
 		// WAIT FOR DATA TO BE ENTERED ON THE TERMINAL:
 		IN A,(#UART_STATUS)
@@ -14,12 +14,12 @@ char uart_read_char(){
 	return 0;
 }
 
-char * uart_read_str(){
+size_c * uart_read_str(){
 
 	return "";
 }
 
-void uart_print_char(char data){
+void uart_print_char(size_c data){
 	data;
 	__asm
 		POP DE // POP THE DATA FROM THE STACK
@@ -36,11 +36,10 @@ void uart_print_char(char data){
 	__endasm;
 }
 
-void uart_print_str(char *str){
-	unsigned char ret = 0;
+void uart_print_str(size_c *str){
 	uart_begin();
-	while(ret==0)
-		if(*str=='\0') ret = 1;
+	while(1)
+		if(*str=='\0') return;
         else uart_print_char(*str++);
 	uart_end();
 }

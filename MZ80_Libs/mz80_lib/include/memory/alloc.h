@@ -1,7 +1,7 @@
 #ifndef MALLOC_H
 #define MALLOC_H
 
-#include "..\types\stddef.h"
+#include "../std/stddef.h"
 #include "heap.h"
 
 

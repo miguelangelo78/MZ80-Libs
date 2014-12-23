@@ -1,7 +1,9 @@
 #include "..\..\include\system\system.h"
 
+bool is_init = false;
+
 void init_pio(){
-	__asm
+    __asm
 		LD A,#PIO_CONFIG
 		OUT (#3),A
 	__endasm;
@@ -23,6 +25,7 @@ void init_io(){
 
 void init(){
 	// INITIALIZE EVERYTHING HERE:
+	is_init = true;
 	init_io();
 }
 
@@ -41,5 +44,5 @@ void delay_sec(char sec){
 }
 
 void end(){
-	for(;;){}	
+	for(;;){}
 }

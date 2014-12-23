@@ -1,4 +1,4 @@
-#include "..\..\..\include\stdlib\math\math.h"
+#include "../../../../include/std/math/math.h"
 
 unsigned char div(unsigned char x,unsigned char y){
 	unsigned char quo = 0,
