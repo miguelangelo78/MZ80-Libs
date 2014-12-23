@@ -7,7 +7,8 @@
 		<Option compiler="sdcc" />
 		<Build>
 			<Target title="Release">
-				<Option output="bin/Release/MZ80_Libs.hex" prefix_auto="0" extension_auto="0" />
+				<Option platforms="Windows;" />
+				<Option output="bin/Release/MZ80_Libs.hex" prefix_auto="1" extension_auto="0" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="sdcc" />
@@ -16,12 +17,66 @@
 					<Add option="-mz80" />
 				</Compiler>
 				<Linker>
-					<Add library="crt0.rel" />
+					<Add option="C:\z80c\crt0.rel" />
 				</Linker>
 			</Target>
 		</Build>
+		<Unit filename="MZ80_Libs.depend" />
+		<Unit filename="MZ80_Libs.layout" />
+		<Unit filename="bin/Release/MZ80_Libs.bin" />
+		<Unit filename="bin/Release/MZ80_Libs.lk" />
+		<Unit filename="bin/Release/MZ80_Libs.map" />
+		<Unit filename="bin/Release/MZ80_Libs.noi" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/include/io/io.h" />
+		<Unit filename="mz80_lib/include/io/lcd.h" />
+		<Unit filename="mz80_lib/include/io/stdio.h" />
+		<Unit filename="mz80_lib/include/io/uart.h" />
+		<Unit filename="mz80_lib/include/memory/alloc.h" />
+		<Unit filename="mz80_lib/include/memory/heap.h" />
+		<Unit filename="mz80_lib/include/stdlib/math/math.h" />
+		<Unit filename="mz80_lib/include/stdlib/stdlib.h" />
+		<Unit filename="mz80_lib/include/stdlib/string/string.h" />
+		<Unit filename="mz80_lib/include/system/system.h" />
+		<Unit filename="mz80_lib/include/types/stddef.h" />
+		<Unit filename="mz80_lib/lib/README.txt" />
+		<Unit filename="mz80_lib/src/io/pio/io_int/io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/src/io/pio/lcd/lcd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/src/io/sio/uart/uart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/src/memory/alloc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/src/memory/heap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/src/memory/memcpy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/src/stdlib/math/div.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/src/stdlib/string/string.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mz80_lib/src/system/system.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="obj/Release/main.asm">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="obj/Release/main.lst">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="obj/Release/main.sym">
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>
 			<code_completion />

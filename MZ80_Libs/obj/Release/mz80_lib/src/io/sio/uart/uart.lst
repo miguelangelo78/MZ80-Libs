@@ -1,0 +1,184 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
+                              4 ; This file was generated Tue Dec 23 01:34:29 2014
+                              5 ;--------------------------------------------------------
+                              6 	.module uart
+                              7 	.optsdcc -mz80
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _clock_throttle
+                             13 	.globl _uart_read_char
+                             14 	.globl _uart_read_str
+                             15 	.globl _uart_print_char
+                             16 	.globl _uart_print_str
+                             17 	.globl _uart_flush
+                             18 	.globl _uart_clrscr
+                             19 	.globl _uart_begin
+                             20 	.globl _uart_end
+                             21 ;--------------------------------------------------------
+                             22 ; special function registers
+                             23 ;--------------------------------------------------------
+                             24 ;--------------------------------------------------------
+                             25 ; ram data
+                             26 ;--------------------------------------------------------
+                             27 	.area _DATA
+                             28 ;--------------------------------------------------------
+                             29 ; ram data
+                             30 ;--------------------------------------------------------
+                             31 	.area _INITIALIZED
+                             32 ;--------------------------------------------------------
+                             33 ; absolute external ram data
+                             34 ;--------------------------------------------------------
+                             35 	.area _DABS (ABS)
+                             36 ;--------------------------------------------------------
+                             37 ; global & static initialisations
+                             38 ;--------------------------------------------------------
+                             39 	.area _HOME
+                             40 	.area _GSINIT
+                             41 	.area _GSFINAL
+                             42 	.area _GSINIT
+                             43 ;--------------------------------------------------------
+                             44 ; Home
+                             45 ;--------------------------------------------------------
+                             46 	.area _HOME
+                             47 	.area _HOME
+                             48 ;--------------------------------------------------------
+                             49 ; code
+                             50 ;--------------------------------------------------------
+                             51 	.area _CODE
+                             52 ;mz80_lib\src\io\sio\uart\uart.c:3: char uart_read_char(){
+                             53 ;	---------------------------------
+                             54 ; Function uart_read_char
+                             55 ; ---------------------------------
+   0000                      56 _uart_read_char_start::
+   0000                      57 _uart_read_char:
+                             58 ;mz80_lib\src\io\sio\uart\uart.c:13: __endasm;
+   0000 DB 1A         [11]   59 	IN A,(#(16 +8 +2))
+   0002 CB 4F         [ 8]   60 	BIT #1,A
+   0004 28 FA         [12]   61 	JR Z,_uart_read_char
+   0006 DB 19         [11]   62 	IN A,(#(16 +8 +1))
+   0008 6F            [ 4]   63 	LD L,A
+   0009 C9            [10]   64 	RET
+                             65 ;mz80_lib\src\io\sio\uart\uart.c:14: return 0;
+   000A 2E 00         [ 7]   66 	ld	l,#0x00
+   000C C9            [10]   67 	ret
+   000D                      68 _uart_read_char_end::
+                             69 ;mz80_lib\src\io\sio\uart\uart.c:17: char * uart_read_str(){
+                             70 ;	---------------------------------
+                             71 ; Function uart_read_str
+                             72 ; ---------------------------------
+   000D                      73 _uart_read_str_start::
+   000D                      74 _uart_read_str:
+                             75 ;mz80_lib\src\io\sio\uart\uart.c:19: return "";
+   000D 21r11r00      [10]   76 	ld	hl,#___str_0
+   0010 C9            [10]   77 	ret
+   0011                      78 _uart_read_str_end::
+   0011                      79 ___str_0:
+   0011 00                   80 	.db 0x00
+                             81 ;mz80_lib\src\io\sio\uart\uart.c:22: void uart_print_char(char data){
+                             82 ;	---------------------------------
+                             83 ; Function uart_print_char
+                             84 ; ---------------------------------
+   0012                      85 _uart_print_char_start::
+   0012                      86 _uart_print_char:
+                             87 ;mz80_lib\src\io\sio\uart\uart.c:36: __endasm;
+   0012 D1            [10]   88 	POP DE
+   0013 E1            [10]   89 	POP HL
+   0014 45            [ 4]   90 	LD B,L
+   0015 E5            [11]   91 	PUSH HL
+   0016 D5            [11]   92 	PUSH DE
+   0017                      93 	 uart_print_char_wait:
+   0017 DB 1A         [11]   94 	IN A,(#(16 +8 +2))
+   0019 CB 47         [ 8]   95 	BIT #0,A
+   001B 20 FA         [12]   96 	JR NZ,uart_print_char_wait
+   001D 78            [ 4]   97 	LD A,B
+   001E D3 19         [11]   98 	OUT (#(16 +8 +1)),A
+   0020 C9            [10]   99 	ret
+   0021                     100 _uart_print_char_end::
+                            101 ;mz80_lib\src\io\sio\uart\uart.c:39: void uart_print_str(char *str){
+                            102 ;	---------------------------------
+                            103 ; Function uart_print_str
+                            104 ; ---------------------------------
+   0021                     105 _uart_print_str_start::
+   0021                     106 _uart_print_str:
+                            107 ;mz80_lib\src\io\sio\uart\uart.c:40: uart_begin();
+   0021 CDr41r00      [17]  108 	call	_uart_begin
+                            109 ;mz80_lib\src\io\sio\uart\uart.c:41: while(1)
+   0024 C1            [10]  110 	pop	bc
+   0025 E1            [10]  111 	pop	hl
+   0026 E5            [11]  112 	push	hl
+   0027 C5            [11]  113 	push	bc
+   0028                     114 00105$:
+                            115 ;mz80_lib\src\io\sio\uart\uart.c:42: if(*str=='\0') return;
+   0028 7E            [ 7]  116 	ld	a,(hl)
+   0029 B7            [ 4]  117 	or	a, a
+   002A C8            [11]  118 	ret	Z
+                            119 ;mz80_lib\src\io\sio\uart\uart.c:43: else uart_print_char(*str++);
+   002B 23            [ 6]  120 	inc	hl
+   002C E5            [11]  121 	push	hl
+   002D F5            [11]  122 	push	af
+   002E 33            [ 6]  123 	inc	sp
+   002F CDr12r00      [17]  124 	call	_uart_print_char
+   0032 33            [ 6]  125 	inc	sp
+   0033 E1            [10]  126 	pop	hl
+   0034 18 F2         [12]  127 	jr	00105$
+                            128 ;mz80_lib\src\io\sio\uart\uart.c:44: uart_end();
+   0036 C9            [10]  129 	ret
+   0037                     130 _uart_print_str_end::
+                            131 ;mz80_lib\src\io\sio\uart\uart.c:47: void uart_flush(){
+                            132 ;	---------------------------------
+                            133 ; Function uart_flush
+                            134 ; ---------------------------------
+   0037                     135 _uart_flush_start::
+   0037                     136 _uart_flush:
+                            137 ;mz80_lib\src\io\sio\uart\uart.c:48: uart_print_char(UART_FLUSH_C);
+   0037 3E 18         [ 7]  138 	ld	a,#0x18
+   0039 F5            [11]  139 	push	af
+   003A 33            [ 6]  140 	inc	sp
+   003B CDr12r00      [17]  141 	call	_uart_print_char
+   003E 33            [ 6]  142 	inc	sp
+   003F C9            [10]  143 	ret
+   0040                     144 _uart_flush_end::
+                            145 ;mz80_lib\src\io\sio\uart\uart.c:51: void uart_clrscr(){
+                            146 ;	---------------------------------
+                            147 ; Function uart_clrscr
+                            148 ; ---------------------------------
+   0040                     149 _uart_clrscr_start::
+   0040                     150 _uart_clrscr:
+                            151 ;mz80_lib\src\io\sio\uart\uart.c:54: }
+   0040 C9            [10]  152 	ret
+   0041                     153 _uart_clrscr_end::
+                            154 ;mz80_lib\src\io\sio\uart\uart.c:56: void uart_begin(){
+                            155 ;	---------------------------------
+                            156 ; Function uart_begin
+                            157 ; ---------------------------------
+   0041                     158 _uart_begin_start::
+   0041                     159 _uart_begin:
+                            160 ;mz80_lib\src\io\sio\uart\uart.c:57: clock_throttle(CLK_0041MHZ);
+   0041 3E 01         [ 7]  161 	ld	a,#0x01
+   0043 F5            [11]  162 	push	af
+   0044 33            [ 6]  163 	inc	sp
+   0045 CDr00r00      [17]  164 	call	_clock_throttle
+   0048 33            [ 6]  165 	inc	sp
+   0049 C9            [10]  166 	ret
+   004A                     167 _uart_begin_end::
+                            168 ;mz80_lib\src\io\sio\uart\uart.c:59: void uart_end(){
+                            169 ;	---------------------------------
+                            170 ; Function uart_end
+                            171 ; ---------------------------------
+   004A                     172 _uart_end_start::
+   004A                     173 _uart_end:
+                            174 ;mz80_lib\src\io\sio\uart\uart.c:60: clock_throttle(CLK_3MHZ);
+   004A AF            [ 4]  175 	xor	a, a
+   004B F5            [11]  176 	push	af
+   004C 33            [ 6]  177 	inc	sp
+   004D CDr00r00      [17]  178 	call	_clock_throttle
+   0050 33            [ 6]  179 	inc	sp
+   0051 C9            [10]  180 	ret
+   0052                     181 _uart_end_end::
+                            182 	.area _CODE
+                            183 	.area _INITIALIZER
+                            184 	.area _CABS (ABS)

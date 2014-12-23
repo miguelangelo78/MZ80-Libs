@@ -1,0 +1,19 @@
+-mjwx
+-i bin\Release\MZ80_Libs.hex
+-b _CODE = 0x0200
+-b _DATA = 0x8000
+-k C:\Program Files\SDCC\bin\..\lib\z80
+-l z80
+C:\z80c\crt0.rel
+obj\Release\main.rel
+obj\Release\mz80_lib\src\io\pio\io_int\io.rel
+obj\Release\mz80_lib\src\io\pio\lcd\lcd.rel
+obj\Release\mz80_lib\src\io\sio\uart\uart.rel
+obj\Release\mz80_lib\src\memory\alloc.rel
+obj\Release\mz80_lib\src\memory\heap.rel
+obj\Release\mz80_lib\src\memory\memcpy.rel
+obj\Release\mz80_lib\src\stdlib\math\div.rel
+obj\Release\mz80_lib\src\stdlib\string\string.rel
+obj\Release\mz80_lib\src\system\system.rel
+
+-e

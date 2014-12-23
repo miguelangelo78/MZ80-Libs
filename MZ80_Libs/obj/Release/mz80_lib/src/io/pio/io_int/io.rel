@@ -1,0 +1,110 @@
+XL2
+H 9 areas 13 global symbols
+M io
+O -mz80
+S .__.ABS. Def0000
+A _CODE size 8B flags 0 addr 0
+S _out_array_start Def0007
+S _out_start Def0000
+S _out_array_end Def0049
+S _out_end Def0007
+S _port_in_array Def0086
+S _port_out_array Def004C
+S _port_in Def007F
+S _port_out Def0049
+S _port_in_array_start Def0086
+S _port_out_array_start Def004C
+S _port_in_start Def007F
+S _port_out_start Def0049
+S _port_in_array_end Def008A
+S _port_out_array_end Def007F
+S _port_in_end Def0086
+S _port_out_end Def004C
+S _out_array Def0007
+S _out Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 C5 42 4B ED 41 C1 C9
+R 00 00 00 00
+T 07 00
+R 00 00 00 00
+T 07 00
+R 00 00 00 00
+T 07 00
+R 00 00 00 00
+T 07 00 FD 21 03 00 FD 39 FD 5E 00 FD 56 01 01
+R 00 00 00 00
+T 14 00 00 00
+R 00 00 00 00
+T 16 00
+R 00 00 00 00
+T 16 00 21 05 00 39 79 96 78 23 9E E2 24 00 EE 80
+R 00 00 00 00 00 0C 00 00
+T 24 00
+R 00 00 00 00
+T 24 00 F0 1A 67 13 FD 21 03 00 FD 39 FD 73 00 FD
+R 00 00 00 00
+T 32 00 72 01 C5 D5 E5 33 21 07 00 39 7E F5 33 CD
+R 00 00 00 00
+T 40 00 00 00 F1 D1 C1 03 18 CE C9
+R 00 00 00 00 00 02 00 00
+T 49 00
+R 00 00 00 00
+T 49 00
+R 00 00 00 00
+T 49 00
+R 00 00 00 00
+T 49 00 D3 00 C9
+R 00 00 00 00
+T 4C 00
+R 00 00 00 00
+T 4C 00
+R 00 00 00 00
+T 4C 00
+R 00 00 00 00
+T 4C 00 C1 D1 D5 C5 01 00 00
+R 00 00 00 00
+T 53 00
+R 00 00 00 00
+T 53 00 21 04 00 39 79 96 78 23 9E E2 61 00 EE 80
+R 00 00 00 00 00 0C 00 00
+T 61 00
+R 00 00 00 00
+T 61 00 F0 1A 67 13 FD 21 02 00 FD 39 FD 73 00 FD
+R 00 00 00 00
+T 6F 00 72 01 C5 D5 E5 33 CD 49 00 33 D1 C1 03 18
+R 00 00 00 00 00 09 00 00
+T 7D 00 D5 C9
+R 00 00 00 00
+T 7F 00
+R 00 00 00 00
+T 7F 00
+R 00 00 00 00
+T 7F 00
+R 00 00 00 00
+T 7F 00 DB 01 6F C9 2E 00 C9
+R 00 00 00 00
+T 86 00
+R 00 00 00 00
+T 86 00
+R 00 00 00 00
+T 86 00
+R 00 00 00 00
+T 86 00 21 8A 00 C9
+R 00 00 00 00 00 03 00 00
+T 8A 00
+R 00 00 00 00
+T 8A 00
+R 00 00 00 00
+T 8A 00 00
+R 00 00 00 00

@@ -1,0 +1,102 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
+                              4 ; This file was generated Tue Dec 23 01:34:28 2014
+                              5 ;--------------------------------------------------------
+                              6 	.module lcd
+                              7 	.optsdcc -mz80
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _out
+                             13 	.globl _lcd_print_char
+                             14 	.globl _lcd_print_str
+                             15 	.globl _lcd_clrscr
+                             16 ;--------------------------------------------------------
+                             17 ; special function registers
+                             18 ;--------------------------------------------------------
+                             19 ;--------------------------------------------------------
+                             20 ; ram data
+                             21 ;--------------------------------------------------------
+                             22 	.area _DATA
+                             23 ;--------------------------------------------------------
+                             24 ; ram data
+                             25 ;--------------------------------------------------------
+                             26 	.area _INITIALIZED
+                             27 ;--------------------------------------------------------
+                             28 ; absolute external ram data
+                             29 ;--------------------------------------------------------
+                             30 	.area _DABS (ABS)
+                             31 ;--------------------------------------------------------
+                             32 ; global & static initialisations
+                             33 ;--------------------------------------------------------
+                             34 	.area _HOME
+                             35 	.area _GSINIT
+                             36 	.area _GSFINAL
+                             37 	.area _GSINIT
+                             38 ;--------------------------------------------------------
+                             39 ; Home
+                             40 ;--------------------------------------------------------
+                             41 	.area _HOME
+                             42 	.area _HOME
+                             43 ;--------------------------------------------------------
+                             44 ; code
+                             45 ;--------------------------------------------------------
+                             46 	.area _CODE
+                             47 ;mz80_lib\src\io\pio\lcd\lcd.c:3: void lcd_print_char(char data){
+                             48 ;	---------------------------------
+                             49 ; Function lcd_print_char
+                             50 ; ---------------------------------
+   0000                      51 _lcd_print_char_start::
+   0000                      52 _lcd_print_char:
+                             53 ;mz80_lib\src\io\pio\lcd\lcd.c:5: out(PIO_LCD_DAT,data);
+   0000 21 02 00      [10]   54 	ld	hl, #2+0
+   0003 39            [11]   55 	add	hl, sp
+   0004 56            [ 7]   56 	ld	d, (hl)
+   0005 1E 06         [ 7]   57 	ld	e,#0x06
+   0007 D5            [11]   58 	push	de
+   0008 CDr00r00      [17]   59 	call	_out
+   000B F1            [10]   60 	pop	af
+   000C C9            [10]   61 	ret
+   000D                      62 _lcd_print_char_end::
+                             63 ;mz80_lib\src\io\pio\lcd\lcd.c:8: void lcd_print_str(char * str){
+                             64 ;	---------------------------------
+                             65 ; Function lcd_print_str
+                             66 ; ---------------------------------
+   000D                      67 _lcd_print_str_start::
+   000D                      68 _lcd_print_str:
+                             69 ;mz80_lib\src\io\pio\lcd\lcd.c:9: while(1)
+   000D C1            [10]   70 	pop	bc
+   000E D1            [10]   71 	pop	de
+   000F D5            [11]   72 	push	de
+   0010 C5            [11]   73 	push	bc
+   0011                      74 00105$:
+                             75 ;mz80_lib\src\io\pio\lcd\lcd.c:10: if(*str=='\0') return;
+   0011 1A            [ 7]   76 	ld	a,(de)
+   0012 B7            [ 4]   77 	or	a, a
+   0013 C8            [11]   78 	ret	Z
+                             79 ;mz80_lib\src\io\pio\lcd\lcd.c:11: else out(PIO_LCD_DAT,*str++);
+   0014 13            [ 6]   80 	inc	de
+   0015 D5            [11]   81 	push	de
+   0016 57            [ 4]   82 	ld	d,a
+   0017 1E 06         [ 7]   83 	ld	e,#0x06
+   0019 D5            [11]   84 	push	de
+   001A CDr00r00      [17]   85 	call	_out
+   001D F1            [10]   86 	pop	af
+   001E D1            [10]   87 	pop	de
+   001F 18 F0         [12]   88 	jr	00105$
+   0021 C9            [10]   89 	ret
+   0022                      90 _lcd_print_str_end::
+                             91 ;mz80_lib\src\io\pio\lcd\lcd.c:14: void lcd_clrscr(){
+                             92 ;	---------------------------------
+                             93 ; Function lcd_clrscr
+                             94 ; ---------------------------------
+   0022                      95 _lcd_clrscr_start::
+   0022                      96 _lcd_clrscr:
+                             97 ;mz80_lib\src\io\pio\lcd\lcd.c:17: }
+   0022 C9            [10]   98 	ret
+   0023                      99 _lcd_clrscr_end::
+                            100 	.area _CODE
+                            101 	.area _INITIALIZER
+                            102 	.area _CABS (ABS)

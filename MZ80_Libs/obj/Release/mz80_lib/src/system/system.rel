@@ -1,0 +1,123 @@
+XL2
+H 9 areas 1A global symbols
+M system
+O -mz80
+S .__.ABS. Def0000
+S _out Ref0000
+A _CODE size 54 flags 0 addr 0
+S _clock_throttle Def0017
+S _delay_ms_end Def0036
+S _init_pio_start Def0000
+S _delay_sec Def0036
+S _init_io Def000E
+S _clock_throttle_start Def0017
+S _init_pio_end Def0005
+S _init Def0014
+S _delay_sec_start Def0036
+S _clock_throttle_end Def0024
+S _end Def0052
+S _init_io_start Def000E
+S _delay_sec_end Def0052
+S _init_start Def0014
+S _init_io_end Def0014
+S _end_start Def0052
+S _init_lcd Def0005
+S _init_end Def0017
+S _end_end Def0054
+S _delay_ms Def0024
+S _init_lcd_start Def0005
+S _delay_ms_start Def0024
+S _init_pio Def0000
+S _init_lcd_end Def000E
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 3E 82 D3 03 C9
+R 00 00 00 00
+T 05 00
+R 00 00 00 00
+T 05 00
+R 00 00 00 00
+T 05 00
+R 00 00 00 00
+T 05 00 3E 0F D3 02 3E 00 D3 0E C9
+R 00 00 00 00
+T 0E 00
+R 00 00 00 00
+T 0E 00
+R 00 00 00 00
+T 0E 00
+R 00 00 00 00
+T 0E 00 CD 00 00 C3 05 00
+R 00 00 00 00 00 03 00 00 00 06 00 00
+T 14 00
+R 00 00 00 00
+T 14 00
+R 00 00 00 00
+T 14 00
+R 00 00 00 00
+T 14 00 C3 0E 00
+R 00 00 00 00 00 03 00 00
+T 17 00
+R 00 00 00 00
+T 17 00
+R 00 00 00 00
+T 17 00
+R 00 00 00 00
+T 17 00 21 02 00 39 56 1E 1C D5 CD 00 00 F1 C9
+R 00 00 00 00 02 0B 01 00
+T 24 00
+R 00 00 00 00
+T 24 00
+R 00 00 00 00
+T 24 00
+R 00 00 00 00
+T 24 00 16 00
+R 00 00 00 00
+T 26 00
+R 00 00 00 00
+T 26 00 21 02 00 39 7A 96 E2 31 00 EE 80
+R 00 00 00 00 00 09 00 00
+T 31 00
+R 00 00 00 00
+T 31 00 F0 14 18 F1 C9
+R 00 00 00 00
+T 36 00
+R 00 00 00 00
+T 36 00
+R 00 00 00 00
+T 36 00
+R 00 00 00 00
+T 36 00 16 00
+R 00 00 00 00
+T 38 00
+R 00 00 00 00
+T 38 00 21 02 00 39 7A 96 E2 43 00 EE 80
+R 00 00 00 00 00 09 00 00
+T 43 00
+R 00 00 00 00
+T 43 00 F0 D5 3E 14 F5 33 CD 24 00 33 D1 14 18 E7
+R 00 00 00 00 00 09 00 00
+T 51 00 C9
+R 00 00 00 00
+T 52 00
+R 00 00 00 00
+T 52 00
+R 00 00 00 00
+T 52 00
+R 00 00 00 00
+T 52 00
+R 00 00 00 00
+T 52 00 18 FE
+R 00 00 00 00
+T 54 00
+R 00 00 00 00
