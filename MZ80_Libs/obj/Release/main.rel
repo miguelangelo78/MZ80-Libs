@@ -1,16 +1,15 @@
 XL2
-H 9 areas 8 global symbols
+H 9 areas 7 global symbols
 M main
 O -mz80
 S _strcpy Ref0000
 S _init Ref0000
-S _lcd_print_str Ref0000
+S _lputs Ref0000
 S .__.ABS. Def0000
-S _puts Ref0000
-A _CODE size 32 flags 0 addr 0
+A _CODE size 30 flags 0 addr 0
 S _main Def0000
 S _main_start Def0000
-S _main_end Def001F
+S _main_end Def0018
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -23,23 +22,19 @@ T 00 00
 R 00 00 00 00
 T 00 00
 R 00 00 00 00
-T 00 00 CD 00 00 21 1F 00 E5 21 00 20 E5 CD 00 00
+T 00 00 CD 00 00 21 18 00 E5 21 00 20 E5 CD 00 00
 R 00 00 00 00 02 03 01 00 00 06 00 00 02 0E 00 00
-T 0E 00 F1 21 26 00 E3 CD 00 00 21 2C 00 E3 CD
-R 00 00 00 00 00 04 00 00 02 08 04 00 00 0B 00 00
-T 1B 00 00 00 F1 C9
-R 00 00 00 00 02 02 02 00
-T 1F 00
+T 0E 00 F1 21 2C 00 E3 CD 00 00 F1 C9
+R 00 00 00 00 00 04 00 00 02 08 02 00
+T 18 00
 R 00 00 00 00
-T 1F 00
+T 18 00
 R 00 00 00 00
-T 1F 00 43 4F 50 49 45 44 00
+T 18 00 49 74 27 73 20 77 6F 72 6B 69 6E 67 2C 20
 R 00 00 00 00
-T 26 00
-R 00 00 00 00
-T 26 00 74 65 73 74 61 00
+T 26 00 62 65 61 63 68 00
 R 00 00 00 00
 T 2C 00
 R 00 00 00 00
-T 2C 00 74 65 73 74 65 00
+T 2C 00 73 6D 6E 00
 R 00 00 00 00

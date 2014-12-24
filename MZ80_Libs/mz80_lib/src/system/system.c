@@ -21,6 +21,7 @@ void init_lcd(){
 void init_io(){
 	init_pio();
 	init_lcd();
+	uart_print_str(""); // <- THIS IS TEMPORARY, THE LCD IS BUGGY AND THE 2ND CHARACTER IS NOT PRINTIN
 }
 
 void init(){

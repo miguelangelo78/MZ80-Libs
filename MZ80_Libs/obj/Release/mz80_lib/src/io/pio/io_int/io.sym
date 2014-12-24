@@ -7,25 +7,25 @@ Symbol Table
     .__.ABS.                                                    =  0000 G
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
-  0 ___str_0                                                       008A R
+  0 ___str_0                                                       008B R
   0 _out                                                           0000 GR
-  0 _out_array                                                     0007 GR
-  0 _out_array_end                                                 0049 GR
-  0 _out_array_start                                               0007 GR
-  0 _out_end                                                       0007 GR
+  0 _out_array                                                     0008 GR
+  0 _out_array_end                                                 004A GR
+  0 _out_array_start                                               0008 GR
+  0 _out_end                                                       0008 GR
   0 _out_start                                                     0000 GR
-  0 _port_in                                                       007F GR
-  0 _port_in_array                                                 0086 GR
-  0 _port_in_array_end                                             008A GR
-  0 _port_in_array_start                                           0086 GR
-  0 _port_in_end                                                   0086 GR
-  0 _port_in_start                                                 007F GR
-  0 _port_out                                                      0049 GR
-  0 _port_out_array                                                004C GR
-  0 _port_out_array_end                                            007F GR
-  0 _port_out_array_start                                          004C GR
-  0 _port_out_end                                                  004C GR
-  0 _port_out_start                                                0049 GR
+  0 _port_in                                                       0080 GR
+  0 _port_in_array                                                 0087 GR
+  0 _port_in_array_end                                             008B GR
+  0 _port_in_array_start                                           0087 GR
+  0 _port_in_end                                                   0087 GR
+  0 _port_in_start                                                 0080 GR
+  0 _port_out                                                      004A GR
+  0 _port_out_array                                                004D GR
+  0 _port_out_array_end                                            0080 GR
+  0 _port_out_array_start                                          004D GR
+  0 _port_out_end                                                  004D GR
+  0 _port_out_start                                                004A GR
 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
@@ -33,7 +33,7 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   8B   flags    0
+   0 _CODE                                      size   8C   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8

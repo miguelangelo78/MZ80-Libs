@@ -4,6 +4,7 @@
 #include "..\io\io.h" // USED FOR THE CLOCK THROTTLER
 #include "../std/stdbool.h"
 #include "../std/string/string.h"
+#include "../io/uart.h"
 
 // PIO CONSTANTS:
 #define PIO_CONFIG 130

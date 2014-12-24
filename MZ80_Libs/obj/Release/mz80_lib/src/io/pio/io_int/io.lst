@@ -1,7 +1,7 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
                               3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
-                              4 ; This file was generated Tue Dec 23 18:07:57 2014
+                              4 ; This file was generated Tue Dec 23 22:50:03 2014
                               5 ;--------------------------------------------------------
                               6 	.module io
                               7 	.optsdcc -mz80
@@ -52,145 +52,146 @@
                              52 ; ---------------------------------
    0000                      53 _out_start::
    0000                      54 _out:
-                             55 ;mz80_lib\src\io\pio\io_int\io.c:11: __endasm;
+                             55 ;mz80_lib\src\io\pio\io_int\io.c:12: __endasm;
    0000 D1            [10]   56 	POP DE
    0001 C1            [10]   57 	POP BC
-   0002 ED 41         [12]   58 	OUT (C),B
-   0004 C5            [11]   59 	PUSH BC
-   0005 D5            [11]   60 	PUSH DE
-   0006 C9            [10]   61 	ret
-   0007                      62 _out_end::
-                             63 ;mz80_lib\src\io\pio\io_int\io.c:14: void out_array(size_c address,size_c * data,int length){
-                             64 ;	---------------------------------
-                             65 ; Function out_array
-                             66 ; ---------------------------------
-   0007                      67 _out_array_start::
-   0007                      68 _out_array:
-                             69 ;mz80_lib\src\io\pio\io_int\io.c:16: for(i=0;i<length;i++)
-   0007 FD 21 03 00   [14]   70 	ld	iy,#3
-   000B FD 39         [15]   71 	add	iy,sp
-   000D FD 5E 00      [19]   72 	ld	e,0 (iy)
-   0010 FD 56 01      [19]   73 	ld	d,1 (iy)
-   0013 01 00 00      [10]   74 	ld	bc,#0x0000
-   0016                      75 00103$:
-   0016 21 05 00      [10]   76 	ld	hl,#5
-   0019 39            [11]   77 	add	hl,sp
-   001A 79            [ 4]   78 	ld	a,c
-   001B 96            [ 7]   79 	sub	a, (hl)
-   001C 78            [ 4]   80 	ld	a,b
-   001D 23            [ 6]   81 	inc	hl
-   001E 9E            [ 7]   82 	sbc	a, (hl)
-   001F E2r24r00      [10]   83 	jp	PO, 00116$
-   0022 EE 80         [ 7]   84 	xor	a, #0x80
-   0024                      85 00116$:
-   0024 F0            [11]   86 	ret	P
-                             87 ;mz80_lib\src\io\pio\io_int\io.c:17: out(address,*data++);
-   0025 1A            [ 7]   88 	ld	a,(de)
-   0026 67            [ 4]   89 	ld	h,a
-   0027 13            [ 6]   90 	inc	de
-   0028 FD 21 03 00   [14]   91 	ld	iy,#3
-   002C FD 39         [15]   92 	add	iy,sp
-   002E FD 73 00      [19]   93 	ld	0 (iy),e
-   0031 FD 72 01      [19]   94 	ld	1 (iy),d
-   0034 C5            [11]   95 	push	bc
-   0035 D5            [11]   96 	push	de
-   0036 E5            [11]   97 	push	hl
-   0037 33            [ 6]   98 	inc	sp
-   0038 21 07 00      [10]   99 	ld	hl, #7+0
-   003B 39            [11]  100 	add	hl, sp
-   003C 7E            [ 7]  101 	ld	a, (hl)
-   003D F5            [11]  102 	push	af
-   003E 33            [ 6]  103 	inc	sp
-   003F CDr00r00      [17]  104 	call	_out
-   0042 F1            [10]  105 	pop	af
-   0043 D1            [10]  106 	pop	de
-   0044 C1            [10]  107 	pop	bc
-                            108 ;mz80_lib\src\io\pio\io_int\io.c:16: for(i=0;i<length;i++)
-   0045 03            [ 6]  109 	inc	bc
-   0046 18 CE         [12]  110 	jr	00103$
-   0048 C9            [10]  111 	ret
-   0049                     112 _out_array_end::
-                            113 ;mz80_lib\src\io\pio\io_int\io.c:20: void port_out(size_c data){
-                            114 ;	---------------------------------
-                            115 ; Function port_out
-                            116 ; ---------------------------------
-   0049                     117 _port_out_start::
-   0049                     118 _port_out:
-                            119 ;mz80_lib\src\io\pio\io_int\io.c:24: __endasm;
-   0049 D3 00         [11]  120 	OUT (#0),A
-   004B C9            [10]  121 	ret
-   004C                     122 _port_out_end::
-                            123 ;mz80_lib\src\io\pio\io_int\io.c:27: void port_out_array(size_c * data, int length){
-                            124 ;	---------------------------------
-                            125 ; Function port_out_array
-                            126 ; ---------------------------------
-   004C                     127 _port_out_array_start::
-   004C                     128 _port_out_array:
-                            129 ;mz80_lib\src\io\pio\io_int\io.c:29: for(i=0;i<length;i++)
-   004C C1            [10]  130 	pop	bc
-   004D D1            [10]  131 	pop	de
-   004E D5            [11]  132 	push	de
-   004F C5            [11]  133 	push	bc
-   0050 01 00 00      [10]  134 	ld	bc,#0x0000
-   0053                     135 00103$:
-   0053 21 04 00      [10]  136 	ld	hl,#4
-   0056 39            [11]  137 	add	hl,sp
-   0057 79            [ 4]  138 	ld	a,c
-   0058 96            [ 7]  139 	sub	a, (hl)
-   0059 78            [ 4]  140 	ld	a,b
-   005A 23            [ 6]  141 	inc	hl
-   005B 9E            [ 7]  142 	sbc	a, (hl)
-   005C E2r61r00      [10]  143 	jp	PO, 00116$
-   005F EE 80         [ 7]  144 	xor	a, #0x80
-   0061                     145 00116$:
-   0061 F0            [11]  146 	ret	P
-                            147 ;mz80_lib\src\io\pio\io_int\io.c:30: port_out(*data++);
-   0062 1A            [ 7]  148 	ld	a,(de)
-   0063 67            [ 4]  149 	ld	h,a
-   0064 13            [ 6]  150 	inc	de
-   0065 FD 21 02 00   [14]  151 	ld	iy,#2
-   0069 FD 39         [15]  152 	add	iy,sp
-   006B FD 73 00      [19]  153 	ld	0 (iy),e
-   006E FD 72 01      [19]  154 	ld	1 (iy),d
-   0071 C5            [11]  155 	push	bc
-   0072 D5            [11]  156 	push	de
-   0073 E5            [11]  157 	push	hl
-   0074 33            [ 6]  158 	inc	sp
-   0075 CDr49r00      [17]  159 	call	_port_out
-   0078 33            [ 6]  160 	inc	sp
-   0079 D1            [10]  161 	pop	de
-   007A C1            [10]  162 	pop	bc
-                            163 ;mz80_lib\src\io\pio\io_int\io.c:29: for(i=0;i<length;i++)
-   007B 03            [ 6]  164 	inc	bc
-   007C 18 D5         [12]  165 	jr	00103$
-   007E C9            [10]  166 	ret
-   007F                     167 _port_out_array_end::
-                            168 ;mz80_lib\src\io\pio\io_int\io.c:33: size_c port_in(){
-                            169 ;	---------------------------------
-                            170 ; Function port_in
-                            171 ; ---------------------------------
-   007F                     172 _port_in_start::
-   007F                     173 _port_in:
-                            174 ;mz80_lib\src\io\pio\io_int\io.c:38: __endasm;
-   007F DB 01         [11]  175 	IN A,(1)
-   0081 6F            [ 4]  176 	LD L,A
-   0082 C9            [10]  177 	RET
-                            178 ;mz80_lib\src\io\pio\io_int\io.c:39: return 0; // This will not run
-   0083 2E 00         [ 7]  179 	ld	l,#0x00
-   0085 C9            [10]  180 	ret
-   0086                     181 _port_in_end::
-                            182 ;mz80_lib\src\io\pio\io_int\io.c:42: size_c* port_in_array(int length){
-                            183 ;	---------------------------------
-                            184 ; Function port_in_array
-                            185 ; ---------------------------------
-   0086                     186 _port_in_array_start::
-   0086                     187 _port_in_array:
-                            188 ;mz80_lib\src\io\pio\io_int\io.c:45: return "";
-   0086 21r8Ar00      [10]  189 	ld	hl,#___str_0
-   0089 C9            [10]  190 	ret
-   008A                     191 _port_in_array_end::
-   008A                     192 ___str_0:
-   008A 00                  193 	.db 0x00
-                            194 	.area _CODE
-                            195 	.area _INITIALIZER
-                            196 	.area _CABS (ABS)
+   0002 C5            [11]   58 	PUSH BC
+   0003 D5            [11]   59 	PUSH DE
+   0004 ED 41         [12]   60 	OUT (C),B
+   0006 C9            [10]   61 	RET
+   0007 C9            [10]   62 	ret
+   0008                      63 _out_end::
+                             64 ;mz80_lib\src\io\pio\io_int\io.c:15: void out_array(size_c address,size_c * data,int length){
+                             65 ;	---------------------------------
+                             66 ; Function out_array
+                             67 ; ---------------------------------
+   0008                      68 _out_array_start::
+   0008                      69 _out_array:
+                             70 ;mz80_lib\src\io\pio\io_int\io.c:17: for(i=0;i<length;i++)
+   0008 FD 21 03 00   [14]   71 	ld	iy,#3
+   000C FD 39         [15]   72 	add	iy,sp
+   000E FD 5E 00      [19]   73 	ld	e,0 (iy)
+   0011 FD 56 01      [19]   74 	ld	d,1 (iy)
+   0014 01 00 00      [10]   75 	ld	bc,#0x0000
+   0017                      76 00103$:
+   0017 21 05 00      [10]   77 	ld	hl,#5
+   001A 39            [11]   78 	add	hl,sp
+   001B 79            [ 4]   79 	ld	a,c
+   001C 96            [ 7]   80 	sub	a, (hl)
+   001D 78            [ 4]   81 	ld	a,b
+   001E 23            [ 6]   82 	inc	hl
+   001F 9E            [ 7]   83 	sbc	a, (hl)
+   0020 E2r25r00      [10]   84 	jp	PO, 00116$
+   0023 EE 80         [ 7]   85 	xor	a, #0x80
+   0025                      86 00116$:
+   0025 F0            [11]   87 	ret	P
+                             88 ;mz80_lib\src\io\pio\io_int\io.c:18: out(address,*data++);
+   0026 1A            [ 7]   89 	ld	a,(de)
+   0027 67            [ 4]   90 	ld	h,a
+   0028 13            [ 6]   91 	inc	de
+   0029 FD 21 03 00   [14]   92 	ld	iy,#3
+   002D FD 39         [15]   93 	add	iy,sp
+   002F FD 73 00      [19]   94 	ld	0 (iy),e
+   0032 FD 72 01      [19]   95 	ld	1 (iy),d
+   0035 C5            [11]   96 	push	bc
+   0036 D5            [11]   97 	push	de
+   0037 E5            [11]   98 	push	hl
+   0038 33            [ 6]   99 	inc	sp
+   0039 21 07 00      [10]  100 	ld	hl, #7+0
+   003C 39            [11]  101 	add	hl, sp
+   003D 7E            [ 7]  102 	ld	a, (hl)
+   003E F5            [11]  103 	push	af
+   003F 33            [ 6]  104 	inc	sp
+   0040 CDr00r00      [17]  105 	call	_out
+   0043 F1            [10]  106 	pop	af
+   0044 D1            [10]  107 	pop	de
+   0045 C1            [10]  108 	pop	bc
+                            109 ;mz80_lib\src\io\pio\io_int\io.c:17: for(i=0;i<length;i++)
+   0046 03            [ 6]  110 	inc	bc
+   0047 18 CE         [12]  111 	jr	00103$
+   0049 C9            [10]  112 	ret
+   004A                     113 _out_array_end::
+                            114 ;mz80_lib\src\io\pio\io_int\io.c:21: void port_out(size_c data){
+                            115 ;	---------------------------------
+                            116 ; Function port_out
+                            117 ; ---------------------------------
+   004A                     118 _port_out_start::
+   004A                     119 _port_out:
+                            120 ;mz80_lib\src\io\pio\io_int\io.c:25: __endasm;
+   004A D3 00         [11]  121 	OUT (#0),A
+   004C C9            [10]  122 	ret
+   004D                     123 _port_out_end::
+                            124 ;mz80_lib\src\io\pio\io_int\io.c:28: void port_out_array(size_c * data, int length){
+                            125 ;	---------------------------------
+                            126 ; Function port_out_array
+                            127 ; ---------------------------------
+   004D                     128 _port_out_array_start::
+   004D                     129 _port_out_array:
+                            130 ;mz80_lib\src\io\pio\io_int\io.c:30: for(i=0;i<length;i++)
+   004D C1            [10]  131 	pop	bc
+   004E D1            [10]  132 	pop	de
+   004F D5            [11]  133 	push	de
+   0050 C5            [11]  134 	push	bc
+   0051 01 00 00      [10]  135 	ld	bc,#0x0000
+   0054                     136 00103$:
+   0054 21 04 00      [10]  137 	ld	hl,#4
+   0057 39            [11]  138 	add	hl,sp
+   0058 79            [ 4]  139 	ld	a,c
+   0059 96            [ 7]  140 	sub	a, (hl)
+   005A 78            [ 4]  141 	ld	a,b
+   005B 23            [ 6]  142 	inc	hl
+   005C 9E            [ 7]  143 	sbc	a, (hl)
+   005D E2r62r00      [10]  144 	jp	PO, 00116$
+   0060 EE 80         [ 7]  145 	xor	a, #0x80
+   0062                     146 00116$:
+   0062 F0            [11]  147 	ret	P
+                            148 ;mz80_lib\src\io\pio\io_int\io.c:31: port_out(*data++);
+   0063 1A            [ 7]  149 	ld	a,(de)
+   0064 67            [ 4]  150 	ld	h,a
+   0065 13            [ 6]  151 	inc	de
+   0066 FD 21 02 00   [14]  152 	ld	iy,#2
+   006A FD 39         [15]  153 	add	iy,sp
+   006C FD 73 00      [19]  154 	ld	0 (iy),e
+   006F FD 72 01      [19]  155 	ld	1 (iy),d
+   0072 C5            [11]  156 	push	bc
+   0073 D5            [11]  157 	push	de
+   0074 E5            [11]  158 	push	hl
+   0075 33            [ 6]  159 	inc	sp
+   0076 CDr4Ar00      [17]  160 	call	_port_out
+   0079 33            [ 6]  161 	inc	sp
+   007A D1            [10]  162 	pop	de
+   007B C1            [10]  163 	pop	bc
+                            164 ;mz80_lib\src\io\pio\io_int\io.c:30: for(i=0;i<length;i++)
+   007C 03            [ 6]  165 	inc	bc
+   007D 18 D5         [12]  166 	jr	00103$
+   007F C9            [10]  167 	ret
+   0080                     168 _port_out_array_end::
+                            169 ;mz80_lib\src\io\pio\io_int\io.c:34: size_c port_in(){
+                            170 ;	---------------------------------
+                            171 ; Function port_in
+                            172 ; ---------------------------------
+   0080                     173 _port_in_start::
+   0080                     174 _port_in:
+                            175 ;mz80_lib\src\io\pio\io_int\io.c:39: __endasm;
+   0080 DB 01         [11]  176 	IN A,(1)
+   0082 6F            [ 4]  177 	LD L,A
+   0083 C9            [10]  178 	RET
+                            179 ;mz80_lib\src\io\pio\io_int\io.c:40: return 0; // This will not run
+   0084 2E 00         [ 7]  180 	ld	l,#0x00
+   0086 C9            [10]  181 	ret
+   0087                     182 _port_in_end::
+                            183 ;mz80_lib\src\io\pio\io_int\io.c:43: size_c* port_in_array(int length){
+                            184 ;	---------------------------------
+                            185 ; Function port_in_array
+                            186 ; ---------------------------------
+   0087                     187 _port_in_array_start::
+   0087                     188 _port_in_array:
+                            189 ;mz80_lib\src\io\pio\io_int\io.c:46: return "";
+   0087 21r8Br00      [10]  190 	ld	hl,#___str_0
+   008A C9            [10]  191 	ret
+   008B                     192 _port_in_array_end::
+   008B                     193 ___str_0:
+   008B 00                  194 	.db 0x00
+                            195 	.area _CODE
+                            196 	.area _INITIALIZER
+                            197 	.area _CABS (ABS)

@@ -1,32 +1,31 @@
 # depslib dependency file v1.0
-1419357978 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\main.c
+1419380772 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\main.c
 	"mz80_lib/include/system/system.h"
 	"mz80_lib/include/std/stdio.h"
 	"mz80_lib/include/memory/alloc.h"
 	"mz80_lib/include/std/stdlib.h"
 	"mz80_lib/include/std/string/string.h"
-	"mz80_lib/include/std/math/math.h"
-	"mz80_lib/include/std/stdarg.h"
-	"mz80_lib/include/std/stdbool.h"
 
-1419357737 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\pio\io_int\io.c
+1419371508 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\pio\io_int\io.c
 	"..\..\..\..\include\io\io.h"
 
 1419357719 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\io.h
 	"..\system\system.h"
 	"../std/stddef.h"
 
-1419355966 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\system\system.h
+1419374996 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\system\system.h
 	"..\io\io.h"
 	"../std/stdbool.h"
 	"../std/string/string.h"
+	"../io/uart.h"
 
-1419357657 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\pio\lcd\lcd.c
+1419380372 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\pio\lcd\lcd.c
 	"..\..\..\..\include\io\lcd.h"
 
-1419357629 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\lcd.h
+1419379774 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\lcd.h
 	"..\system\system.h"
 	"../std/stddef.h"
+	"../std/stdbool.h"
 
 1419357923 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\io\sio\uart\uart.c
 	"..\..\..\..\include\io\uart.h"
@@ -67,7 +66,7 @@
 1419217347 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\stdlib\string\string.h
 	"..\math\math.h"
 
-1419356024 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\system\system.c
+1419372112 source:c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\src\system\system.c
 	"..\..\include\system\system.h"
 
 1417912924 c:\users\miguel\documents\github\mz80-libs\mz80_libs\mz80_lib\include\io\stdio.h

@@ -3,11 +3,12 @@
 void out(size_c address,size_c data){
 	address,data;
 	__asm
-		POP DE
-		POP BC
+	    POP DE
+        POP BC
+        PUSH BC
+        PUSH DE
 		OUT (C),B
-		PUSH BC
-		PUSH DE
+		RET
 	__endasm;
 }
 

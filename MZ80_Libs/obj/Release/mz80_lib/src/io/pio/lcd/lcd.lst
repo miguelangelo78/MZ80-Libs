@@ -1,7 +1,7 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
                               3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
-                              4 ; This file was generated Tue Dec 23 18:07:58 2014
+                              4 ; This file was generated Wed Dec 24 00:19:33 2014
                               5 ;--------------------------------------------------------
                               6 	.module lcd
                               7 	.optsdcc -mz80
@@ -10,93 +10,396 @@
                              10 ; Public variables in this module
                              11 ;--------------------------------------------------------
                              12 	.globl _out
-                             13 	.globl _lcd_print_char
-                             14 	.globl _lcd_print_str
-                             15 	.globl _lcd_clrscr
-                             16 ;--------------------------------------------------------
-                             17 ; special function registers
-                             18 ;--------------------------------------------------------
-                             19 ;--------------------------------------------------------
-                             20 ; ram data
-                             21 ;--------------------------------------------------------
-                             22 	.area _DATA
-                             23 ;--------------------------------------------------------
-                             24 ; ram data
-                             25 ;--------------------------------------------------------
-                             26 	.area _INITIALIZED
-                             27 ;--------------------------------------------------------
-                             28 ; absolute external ram data
+                             13 	.globl __y
+                             14 	.globl __x
+                             15 	.globl _times
+                             16 	.globl _lcd_print_char
+                             17 	.globl _lcd_print_str
+                             18 	.globl _lcd_clrscr
+                             19 	.globl _lcd_goto
+                             20 	.globl _lcd_shift
+                             21 	.globl _lcd_shift_cur
+                             22 	.globl _lcd_scroll
+                             23 	.globl _lcd_scroll_cur
+                             24 	.globl _lcd_goto_orig
+                             25 	.globl _lcd_change_dir
+                             26 	.globl _lcd_reset
+                             27 	.globl _lcd_toggle
+                             28 	.globl _lcd_instruction
                              29 ;--------------------------------------------------------
-                             30 	.area _DABS (ABS)
+                             30 ; special function registers
                              31 ;--------------------------------------------------------
-                             32 ; global & static initialisations
-                             33 ;--------------------------------------------------------
-                             34 	.area _HOME
-                             35 	.area _GSINIT
-                             36 	.area _GSFINAL
-                             37 	.area _GSINIT
-                             38 ;--------------------------------------------------------
-                             39 ; Home
-                             40 ;--------------------------------------------------------
-                             41 	.area _HOME
-                             42 	.area _HOME
-                             43 ;--------------------------------------------------------
-                             44 ; code
-                             45 ;--------------------------------------------------------
-                             46 	.area _CODE
-                             47 ;mz80_lib\src\io\pio\lcd\lcd.c:3: void lcd_print_char(size_c data){
-                             48 ;	---------------------------------
-                             49 ; Function lcd_print_char
-                             50 ; ---------------------------------
-   0000                      51 _lcd_print_char_start::
-   0000                      52 _lcd_print_char:
-                             53 ;mz80_lib\src\io\pio\lcd\lcd.c:4: out(PIO_LCD_DAT,data);
-   0000 21 02 00      [10]   54 	ld	hl, #2+0
-   0003 39            [11]   55 	add	hl, sp
-   0004 56            [ 7]   56 	ld	d, (hl)
-   0005 1E 06         [ 7]   57 	ld	e,#0x06
-   0007 D5            [11]   58 	push	de
-   0008 CDr00r00      [17]   59 	call	_out
-   000B F1            [10]   60 	pop	af
-   000C C9            [10]   61 	ret
-   000D                      62 _lcd_print_char_end::
-                             63 ;mz80_lib\src\io\pio\lcd\lcd.c:7: void lcd_print_str(size_c * str){
-                             64 ;	---------------------------------
-                             65 ; Function lcd_print_str
-                             66 ; ---------------------------------
-   000D                      67 _lcd_print_str_start::
-   000D                      68 _lcd_print_str:
-                             69 ;mz80_lib\src\io\pio\lcd\lcd.c:8: while(1)
-   000D C1            [10]   70 	pop	bc
-   000E D1            [10]   71 	pop	de
-   000F D5            [11]   72 	push	de
-   0010 C5            [11]   73 	push	bc
-   0011                      74 00105$:
-                             75 ;mz80_lib\src\io\pio\lcd\lcd.c:9: if(*str=='\0') return;
-   0011 1A            [ 7]   76 	ld	a,(de)
-   0012 B7            [ 4]   77 	or	a, a
-   0013 C8            [11]   78 	ret	Z
-                             79 ;mz80_lib\src\io\pio\lcd\lcd.c:10: else out(PIO_LCD_DAT,*str++);
-   0014 13            [ 6]   80 	inc	de
-   0015 D5            [11]   81 	push	de
-   0016 57            [ 4]   82 	ld	d,a
-   0017 1E 06         [ 7]   83 	ld	e,#0x06
-   0019 D5            [11]   84 	push	de
-   001A CDr00r00      [17]   85 	call	_out
-   001D F1            [10]   86 	pop	af
-   001E D1            [10]   87 	pop	de
-   001F 18 F0         [12]   88 	jr	00105$
-   0021 C9            [10]   89 	ret
-   0022                      90 _lcd_print_str_end::
-                             91 ;mz80_lib\src\io\pio\lcd\lcd.c:13: void lcd_clrscr(){
-                             92 ;	---------------------------------
-                             93 ; Function lcd_clrscr
-                             94 ; ---------------------------------
-   0022                      95 _lcd_clrscr_start::
-   0022                      96 _lcd_clrscr:
-                             97 ;mz80_lib\src\io\pio\lcd\lcd.c:16: }
-   0022 C9            [10]   98 	ret
-   0023                      99 _lcd_clrscr_end::
-                            100 	.area _CODE
-                            101 	.area _INITIALIZER
-                            102 	.area _CABS (ABS)
+                             32 ;--------------------------------------------------------
+                             33 ; ram data
+                             34 ;--------------------------------------------------------
+                             35 	.area _DATA
+   0000                      36 _times::
+   0000                      37 	.ds 2
+   0002                      38 __x::
+   0002                      39 	.ds 2
+   0004                      40 __y::
+   0004                      41 	.ds 2
+                             42 ;--------------------------------------------------------
+                             43 ; ram data
+                             44 ;--------------------------------------------------------
+                             45 	.area _INITIALIZED
+                             46 ;--------------------------------------------------------
+                             47 ; absolute external ram data
+                             48 ;--------------------------------------------------------
+                             49 	.area _DABS (ABS)
+                             50 ;--------------------------------------------------------
+                             51 ; global & static initialisations
+                             52 ;--------------------------------------------------------
+                             53 	.area _HOME
+                             54 	.area _GSINIT
+                             55 	.area _GSFINAL
+                             56 	.area _GSINIT
+                             57 ;--------------------------------------------------------
+                             58 ; Home
+                             59 ;--------------------------------------------------------
+                             60 	.area _HOME
+                             61 	.area _HOME
+                             62 ;--------------------------------------------------------
+                             63 ; code
+                             64 ;--------------------------------------------------------
+                             65 	.area _CODE
+                             66 ;mz80_lib\src\io\pio\lcd\lcd.c:3: void lcd_print_char(size_c data){
+                             67 ;	---------------------------------
+                             68 ; Function lcd_print_char
+                             69 ; ---------------------------------
+   0000                      70 _lcd_print_char_start::
+   0000                      71 _lcd_print_char:
+                             72 ;mz80_lib\src\io\pio\lcd\lcd.c:4: out(PIO_LCD_DAT,data);
+   0000 21 02 00      [10]   73 	ld	hl, #2+0
+   0003 39            [11]   74 	add	hl, sp
+   0004 56            [ 7]   75 	ld	d, (hl)
+   0005 1E 06         [ 7]   76 	ld	e,#0x06
+   0007 D5            [11]   77 	push	de
+   0008 CDr00r00      [17]   78 	call	_out
+   000B F1            [10]   79 	pop	af
+   000C C9            [10]   80 	ret
+   000D                      81 _lcd_print_char_end::
+                             82 ;mz80_lib\src\io\pio\lcd\lcd.c:7: void lcd_print_str(size_c * str){
+                             83 ;	---------------------------------
+                             84 ; Function lcd_print_str
+                             85 ; ---------------------------------
+   000D                      86 _lcd_print_str_start::
+   000D                      87 _lcd_print_str:
+                             88 ;mz80_lib\src\io\pio\lcd\lcd.c:8: while(1)
+   000D C1            [10]   89 	pop	bc
+   000E D1            [10]   90 	pop	de
+   000F D5            [11]   91 	push	de
+   0010 C5            [11]   92 	push	bc
+   0011                      93 00105$:
+                             94 ;mz80_lib\src\io\pio\lcd\lcd.c:9: if(*str=='\0') return;
+   0011 1A            [ 7]   95 	ld	a,(de)
+   0012 B7            [ 4]   96 	or	a, a
+   0013 C8            [11]   97 	ret	Z
+                             98 ;mz80_lib\src\io\pio\lcd\lcd.c:10: else out(PIO_LCD_DAT,*str++);
+   0014 13            [ 6]   99 	inc	de
+   0015 D5            [11]  100 	push	de
+   0016 57            [ 4]  101 	ld	d,a
+   0017 1E 06         [ 7]  102 	ld	e,#0x06
+   0019 D5            [11]  103 	push	de
+   001A CDr00r00      [17]  104 	call	_out
+   001D F1            [10]  105 	pop	af
+   001E D1            [10]  106 	pop	de
+   001F 18 F0         [12]  107 	jr	00105$
+   0021 C9            [10]  108 	ret
+   0022                     109 _lcd_print_str_end::
+                            110 ;mz80_lib\src\io\pio\lcd\lcd.c:13: void lcd_clrscr(){
+                            111 ;	---------------------------------
+                            112 ; Function lcd_clrscr
+                            113 ; ---------------------------------
+   0022                     114 _lcd_clrscr_start::
+   0022                     115 _lcd_clrscr:
+                            116 ;mz80_lib\src\io\pio\lcd\lcd.c:14: lcd_reset(); // send instructions to clear the LCD / reset the LCD
+   0022 C3r24r01      [10]  117 	jp	_lcd_reset
+   0025                     118 _lcd_clrscr_end::
+                            119 ;mz80_lib\src\io\pio\lcd\lcd.c:18: void lcd_goto(size_c x,size_c y){
+                            120 ;	---------------------------------
+                            121 ; Function lcd_goto
+                            122 ; ---------------------------------
+   0025                     123 _lcd_goto_start::
+   0025                     124 _lcd_goto:
+                            125 ;mz80_lib\src\io\pio\lcd\lcd.c:19: _x = x;
+   0025 21 02 00      [10]  126 	ld	hl, #2+0
+   0028 39            [11]  127 	add	hl, sp
+   0029 7E            [ 7]  128 	ld	a, (hl)
+   002A 32r02r00      [13]  129 	ld	(#__x + 0),a
+   002D 21r03r00      [10]  130 	ld	hl,#__x + 1
+   0030 36 00         [10]  131 	ld	(hl), #0x00
+                            132 ;mz80_lib\src\io\pio\lcd\lcd.c:20: _y = y;
+   0032 21 03 00      [10]  133 	ld	hl, #3+0
+   0035 39            [11]  134 	add	hl, sp
+   0036 7E            [ 7]  135 	ld	a, (hl)
+   0037 32r04r00      [13]  136 	ld	(#__y + 0),a
+   003A 21r05r00      [10]  137 	ld	hl,#__y + 1
+   003D 36 00         [10]  138 	ld	(hl), #0x00
+                            139 ;mz80_lib\src\io\pio\lcd\lcd.c:21: if(_y==0) _y = 1;
+   003F 3Ar05r00      [13]  140 	ld	a,(#__y + 1)
+   0042 21r04r00      [10]  141 	ld	hl,#__y + 0
+   0045 B6            [ 7]  142 	or	a,(hl)
+   0046 20 0A         [12]  143 	jr	NZ,00102$
+   0048 21r04r00      [10]  144 	ld	hl,#__y + 0
+   004B 36 01         [10]  145 	ld	(hl), #0x01
+   004D 21r05r00      [10]  146 	ld	hl,#__y + 1
+   0050 36 00         [10]  147 	ld	(hl), #0x00
+   0052                     148 00102$:
+                            149 ;mz80_lib\src\io\pio\lcd\lcd.c:22: times = _x + _y * LCD_COLMAX;
+   0052 ED 4Br04r00   [20]  150 	ld	bc,(__y)
+   0056 69            [ 4]  151 	ld	l, c
+   0057 60            [ 4]  152 	ld	h, b
+   0058 29            [11]  153 	add	hl, hl
+   0059 29            [11]  154 	add	hl, hl
+   005A 09            [11]  155 	add	hl, bc
+   005B 29            [11]  156 	add	hl, hl
+   005C 29            [11]  157 	add	hl, hl
+   005D 55            [ 4]  158 	ld	d,l
+   005E 5C            [ 4]  159 	ld	e,h
+   005F 21r00r00      [10]  160 	ld	hl,#_times
+   0062 3Ar02r00      [13]  161 	ld	a,(#__x + 0)
+   0065 82            [ 4]  162 	add	a, d
+   0066 77            [ 7]  163 	ld	(hl),a
+   0067 3Ar03r00      [13]  164 	ld	a,(#__x + 1)
+   006A 8B            [ 4]  165 	adc	a, e
+   006B 23            [ 6]  166 	inc	hl
+   006C 77            [ 7]  167 	ld	(hl),a
+                            168 ;mz80_lib\src\io\pio\lcd\lcd.c:24: lcd_change_dir(LCD_RIGHT); // change write direction to right
+   006D AF            [ 4]  169 	xor	a, a
+   006E F5            [11]  170 	push	af
+   006F 33            [ 6]  171 	inc	sp
+   0070 CDr0Ar01      [17]  172 	call	_lcd_change_dir
+   0073 33            [ 6]  173 	inc	sp
+                            174 ;mz80_lib\src\io\pio\lcd\lcd.c:25: lcd_goto_orig();           // go to origin first
+   0074 CDr01r01      [17]  175 	call	_lcd_goto_orig
+                            176 ;mz80_lib\src\io\pio\lcd\lcd.c:28: while(times--) lcd_shift_cur(LCD_RIGHT);
+   0077                     177 00103$:
+   0077 ED 5Br00r00   [20]  178 	ld	de,(_times)
+   007B 2Ar00r00      [16]  179 	ld	hl,(_times)
+   007E 2B            [ 6]  180 	dec	hl
+   007F 22r00r00      [16]  181 	ld	(_times),hl
+   0082 7A            [ 4]  182 	ld	a,d
+   0083 B3            [ 4]  183 	or	a,e
+   0084 C8            [11]  184 	ret	Z
+   0085 AF            [ 4]  185 	xor	a, a
+   0086 F5            [11]  186 	push	af
+   0087 33            [ 6]  187 	inc	sp
+   0088 CDrA9r00      [17]  188 	call	_lcd_shift_cur
+   008B 33            [ 6]  189 	inc	sp
+   008C 18 E9         [12]  190 	jr	00103$
+   008E C9            [10]  191 	ret
+   008F                     192 _lcd_goto_end::
+                            193 ;mz80_lib\src\io\pio\lcd\lcd.c:31: void lcd_shift(bool side){
+                            194 ;	---------------------------------
+                            195 ; Function lcd_shift
+                            196 ; ---------------------------------
+   008F                     197 _lcd_shift_start::
+   008F                     198 _lcd_shift:
+                            199 ;mz80_lib\src\io\pio\lcd\lcd.c:32: if(side)    lcd_instruction(LCD_DSHL); // SHIFT LEFT
+   008F 21 02 00      [10]  200 	ld	hl, #2+0
+   0092 39            [11]  201 	add	hl, sp
+   0093 7E            [ 7]  202 	ld	a, (hl)
+   0094 B7            [ 4]  203 	or	a, a
+   0095 28 09         [12]  204 	jr	Z,00102$
+   0097 3E 1C         [ 7]  205 	ld	a,#0x1C
+   0099 F5            [11]  206 	push	af
+   009A 33            [ 6]  207 	inc	sp
+   009B CDr47r01      [17]  208 	call	_lcd_instruction
+   009E 33            [ 6]  209 	inc	sp
+   009F C9            [10]  210 	ret
+   00A0                     211 00102$:
+                            212 ;mz80_lib\src\io\pio\lcd\lcd.c:33: else        lcd_instruction(LCD_DSHR); // SHIFT RIGHT
+   00A0 3E 18         [ 7]  213 	ld	a,#0x18
+   00A2 F5            [11]  214 	push	af
+   00A3 33            [ 6]  215 	inc	sp
+   00A4 CDr47r01      [17]  216 	call	_lcd_instruction
+   00A7 33            [ 6]  217 	inc	sp
+   00A8 C9            [10]  218 	ret
+   00A9                     219 _lcd_shift_end::
+                            220 ;mz80_lib\src\io\pio\lcd\lcd.c:36: void lcd_shift_cur(bool side){
+                            221 ;	---------------------------------
+                            222 ; Function lcd_shift_cur
+                            223 ; ---------------------------------
+   00A9                     224 _lcd_shift_cur_start::
+   00A9                     225 _lcd_shift_cur:
+                            226 ;mz80_lib\src\io\pio\lcd\lcd.c:37: if(side)    lcd_instruction(LCD_SHR); // SHIFT RIGHT
+   00A9 21 02 00      [10]  227 	ld	hl, #2+0
+   00AC 39            [11]  228 	add	hl, sp
+   00AD 7E            [ 7]  229 	ld	a, (hl)
+   00AE B7            [ 4]  230 	or	a, a
+   00AF 28 09         [12]  231 	jr	Z,00102$
+   00B1 3E 10         [ 7]  232 	ld	a,#0x10
+   00B3 F5            [11]  233 	push	af
+   00B4 33            [ 6]  234 	inc	sp
+   00B5 CDr47r01      [17]  235 	call	_lcd_instruction
+   00B8 33            [ 6]  236 	inc	sp
+   00B9 C9            [10]  237 	ret
+   00BA                     238 00102$:
+                            239 ;mz80_lib\src\io\pio\lcd\lcd.c:38: else        lcd_instruction(LCD_SHL); // SHIFT LEFT
+   00BA 3E 14         [ 7]  240 	ld	a,#0x14
+   00BC F5            [11]  241 	push	af
+   00BD 33            [ 6]  242 	inc	sp
+   00BE CDr47r01      [17]  243 	call	_lcd_instruction
+   00C1 33            [ 6]  244 	inc	sp
+   00C2 C9            [10]  245 	ret
+   00C3                     246 _lcd_shift_cur_end::
+                            247 ;mz80_lib\src\io\pio\lcd\lcd.c:41: void lcd_scroll(bool side,size_c times){
+                            248 ;	---------------------------------
+                            249 ; Function lcd_scroll
+                            250 ; ---------------------------------
+   00C3                     251 _lcd_scroll_start::
+   00C3                     252 _lcd_scroll:
+                            253 ;mz80_lib\src\io\pio\lcd\lcd.c:43: size_c i,_times = times;
+   00C3 FD 21 03 00   [14]  254 	ld	iy,#3
+   00C7 FD 39         [15]  255 	add	iy,sp
+   00C9 FD 66 00      [19]  256 	ld	h,0 (iy)
+                            257 ;mz80_lib\src\io\pio\lcd\lcd.c:45: for(i=0;i<_times;i++) lcd_shift(side);
+   00CC 2E 00         [ 7]  258 	ld	l,#0x00
+   00CE                     259 00103$:
+   00CE 7D            [ 4]  260 	ld	a,l
+   00CF 94            [ 4]  261 	sub	a, h
+   00D0 D0            [11]  262 	ret	NC
+   00D1 E5            [11]  263 	push	hl
+   00D2 21 04 00      [10]  264 	ld	hl, #4+0
+   00D5 39            [11]  265 	add	hl, sp
+   00D6 7E            [ 7]  266 	ld	a, (hl)
+   00D7 F5            [11]  267 	push	af
+   00D8 33            [ 6]  268 	inc	sp
+   00D9 CDr8Fr00      [17]  269 	call	_lcd_shift
+   00DC 33            [ 6]  270 	inc	sp
+   00DD E1            [10]  271 	pop	hl
+   00DE 2C            [ 4]  272 	inc	l
+   00DF 18 ED         [12]  273 	jr	00103$
+   00E1 C9            [10]  274 	ret
+   00E2                     275 _lcd_scroll_end::
+                            276 ;mz80_lib\src\io\pio\lcd\lcd.c:48: void lcd_scroll_cur(bool side,size_c times){
+                            277 ;	---------------------------------
+                            278 ; Function lcd_scroll_cur
+                            279 ; ---------------------------------
+   00E2                     280 _lcd_scroll_cur_start::
+   00E2                     281 _lcd_scroll_cur:
+                            282 ;mz80_lib\src\io\pio\lcd\lcd.c:50: size_c i,_times = times;
+   00E2 FD 21 03 00   [14]  283 	ld	iy,#3
+   00E6 FD 39         [15]  284 	add	iy,sp
+   00E8 FD 66 00      [19]  285 	ld	h,0 (iy)
+                            286 ;mz80_lib\src\io\pio\lcd\lcd.c:51: for(i=0;i<_times;i++) lcd_shift_cur(side);
+   00EB 2E 00         [ 7]  287 	ld	l,#0x00
+   00ED                     288 00103$:
+   00ED 7D            [ 4]  289 	ld	a,l
+   00EE 94            [ 4]  290 	sub	a, h
+   00EF D0            [11]  291 	ret	NC
+   00F0 E5            [11]  292 	push	hl
+   00F1 21 04 00      [10]  293 	ld	hl, #4+0
+   00F4 39            [11]  294 	add	hl, sp
+   00F5 7E            [ 7]  295 	ld	a, (hl)
+   00F6 F5            [11]  296 	push	af
+   00F7 33            [ 6]  297 	inc	sp
+   00F8 CDrA9r00      [17]  298 	call	_lcd_shift_cur
+   00FB 33            [ 6]  299 	inc	sp
+   00FC E1            [10]  300 	pop	hl
+   00FD 2C            [ 4]  301 	inc	l
+   00FE 18 ED         [12]  302 	jr	00103$
+   0100 C9            [10]  303 	ret
+   0101                     304 _lcd_scroll_cur_end::
+                            305 ;mz80_lib\src\io\pio\lcd\lcd.c:54: void lcd_goto_orig(){
+                            306 ;	---------------------------------
+                            307 ; Function lcd_goto_orig
+                            308 ; ---------------------------------
+   0101                     309 _lcd_goto_orig_start::
+   0101                     310 _lcd_goto_orig:
+                            311 ;mz80_lib\src\io\pio\lcd\lcd.c:55: lcd_instruction(LCD_ORIGIN);
+   0101 3E 02         [ 7]  312 	ld	a,#0x02
+   0103 F5            [11]  313 	push	af
+   0104 33            [ 6]  314 	inc	sp
+   0105 CDr47r01      [17]  315 	call	_lcd_instruction
+   0108 33            [ 6]  316 	inc	sp
+   0109 C9            [10]  317 	ret
+   010A                     318 _lcd_goto_orig_end::
+                            319 ;mz80_lib\src\io\pio\lcd\lcd.c:58: void lcd_change_dir(bool side){
+                            320 ;	---------------------------------
+                            321 ; Function lcd_change_dir
+                            322 ; ---------------------------------
+   010A                     323 _lcd_change_dir_start::
+   010A                     324 _lcd_change_dir:
+                            325 ;mz80_lib\src\io\pio\lcd\lcd.c:59: if(side) lcd_instruction(LCD_DIRR); // WRITE RIGHT
+   010A 21 02 00      [10]  326 	ld	hl, #2+0
+   010D 39            [11]  327 	add	hl, sp
+   010E 7E            [ 7]  328 	ld	a, (hl)
+   010F B7            [ 4]  329 	or	a, a
+   0110 28 09         [12]  330 	jr	Z,00102$
+   0112 3E 04         [ 7]  331 	ld	a,#0x04
+   0114 F5            [11]  332 	push	af
+   0115 33            [ 6]  333 	inc	sp
+   0116 CDr47r01      [17]  334 	call	_lcd_instruction
+   0119 33            [ 6]  335 	inc	sp
+   011A C9            [10]  336 	ret
+   011B                     337 00102$:
+                            338 ;mz80_lib\src\io\pio\lcd\lcd.c:60: else lcd_instruction(LCD_DIRL);     // WRITE LEFT
+   011B 3E 06         [ 7]  339 	ld	a,#0x06
+   011D F5            [11]  340 	push	af
+   011E 33            [ 6]  341 	inc	sp
+   011F CDr47r01      [17]  342 	call	_lcd_instruction
+   0122 33            [ 6]  343 	inc	sp
+   0123 C9            [10]  344 	ret
+   0124                     345 _lcd_change_dir_end::
+                            346 ;mz80_lib\src\io\pio\lcd\lcd.c:63: void lcd_reset(){
+                            347 ;	---------------------------------
+                            348 ; Function lcd_reset
+                            349 ; ---------------------------------
+   0124                     350 _lcd_reset_start::
+   0124                     351 _lcd_reset:
+                            352 ;mz80_lib\src\io\pio\lcd\lcd.c:64: lcd_instruction(LCD_RESET);
+   0124 3E 01         [ 7]  353 	ld	a,#0x01
+   0126 F5            [11]  354 	push	af
+   0127 33            [ 6]  355 	inc	sp
+   0128 CDr47r01      [17]  356 	call	_lcd_instruction
+   012B 33            [ 6]  357 	inc	sp
+   012C C9            [10]  358 	ret
+   012D                     359 _lcd_reset_end::
+                            360 ;mz80_lib\src\io\pio\lcd\lcd.c:67: void lcd_toggle(bool onoff){
+                            361 ;	---------------------------------
+                            362 ; Function lcd_toggle
+                            363 ; ---------------------------------
+   012D                     364 _lcd_toggle_start::
+   012D                     365 _lcd_toggle:
+                            366 ;mz80_lib\src\io\pio\lcd\lcd.c:68: if(onoff) lcd_instruction(LCD_ON);
+   012D 21 02 00      [10]  367 	ld	hl, #2+0
+   0130 39            [11]  368 	add	hl, sp
+   0131 7E            [ 7]  369 	ld	a, (hl)
+   0132 B7            [ 4]  370 	or	a, a
+   0133 28 09         [12]  371 	jr	Z,00102$
+   0135 3E 0C         [ 7]  372 	ld	a,#0x0C
+   0137 F5            [11]  373 	push	af
+   0138 33            [ 6]  374 	inc	sp
+   0139 CDr47r01      [17]  375 	call	_lcd_instruction
+   013C 33            [ 6]  376 	inc	sp
+   013D C9            [10]  377 	ret
+   013E                     378 00102$:
+                            379 ;mz80_lib\src\io\pio\lcd\lcd.c:69: else lcd_instruction(LCD_OFF);
+   013E 3E 08         [ 7]  380 	ld	a,#0x08
+   0140 F5            [11]  381 	push	af
+   0141 33            [ 6]  382 	inc	sp
+   0142 CDr47r01      [17]  383 	call	_lcd_instruction
+   0145 33            [ 6]  384 	inc	sp
+   0146 C9            [10]  385 	ret
+   0147                     386 _lcd_toggle_end::
+                            387 ;mz80_lib\src\io\pio\lcd\lcd.c:72: void lcd_instruction(size_c ins){
+                            388 ;	---------------------------------
+                            389 ; Function lcd_instruction
+                            390 ; ---------------------------------
+   0147                     391 _lcd_instruction_start::
+   0147                     392 _lcd_instruction:
+                            393 ;mz80_lib\src\io\pio\lcd\lcd.c:73: out(PIO_LCD_INS,ins);
+   0147 21 02 00      [10]  394 	ld	hl, #2+0
+   014A 39            [11]  395 	add	hl, sp
+   014B 56            [ 7]  396 	ld	d, (hl)
+   014C 1E 02         [ 7]  397 	ld	e,#0x02
+   014E D5            [11]  398 	push	de
+   014F CDr00r00      [17]  399 	call	_out
+   0152 F1            [10]  400 	pop	af
+   0153 C9            [10]  401 	ret
+   0154                     402 _lcd_instruction_end::
+                            403 	.area _CODE
+                            404 	.area _INITIALIZER
+                            405 	.area _CABS (ABS)

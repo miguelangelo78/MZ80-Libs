@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW64)
-; This file was generated Tue Dec 23 18:07:59 2014
+; This file was generated Wed Dec 24 00:09:44 2014
 ;--------------------------------------------------------
 	.module printf
 	.optsdcc -mz80
@@ -9,12 +9,12 @@
 ;--------------------------------------------------------
 ; Public variables in this module
 ;--------------------------------------------------------
+	.globl _lcd_print_str
+	.globl _lcd_print_char
 	.globl _uart_print_str
 	.globl _uart_print_char
 	.globl _uart_end
 	.globl _uart_begin
-	.globl _lcd_print_str
-	.globl _lcd_print_char
 	.globl _printf
 	.globl _lprintf
 	.globl _puts
